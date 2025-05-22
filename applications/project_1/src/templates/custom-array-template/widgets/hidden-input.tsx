@@ -1,7 +1,7 @@
-import type { RJSFSchema, WidgetProps } from "@rjsf/utils";
-import React, { useEffect } from "react";
-import { useCustomArrayItemContext } from "../provider";
-import eventBus from "../../../utils/Event";
+import type { RJSFSchema, WidgetProps } from '@rjsf/utils';
+import React, { useEffect } from 'react';
+import eventBus from '../../../utils/Events';
+import { useCustomArrayItemContext } from '../provider';
 
 const HiddenInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
   const {
@@ -17,7 +17,7 @@ const HiddenInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
     // }
     // prevValRef.current = val; // Update previous value after effect runs
 
-    eventBus.on("call-" + index, (data) => {
+    eventBus.on('call-' + index, (data) => {
       console.log({ data });
       props.onChange(true);
     });

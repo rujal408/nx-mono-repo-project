@@ -1,7 +1,7 @@
-import type { RJSFSchema, WidgetProps } from "@rjsf/utils";
-import React, { useCallback, useState } from "react";
-import { useCustomArrayItemContext } from "../provider";
-import eventBus from "../../../utils/Event";
+import type { RJSFSchema, WidgetProps } from '@rjsf/utils';
+import React, { useCallback, useState } from 'react';
+import eventBus from '../../../utils/Events';
+import { useCustomArrayItemContext } from '../provider';
 
 const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
   const { value, onChange, placeholder, required } = props;
@@ -12,7 +12,7 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange(event.target.value);
     },
-    [],
+    []
   );
 
   const {
@@ -21,14 +21,14 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
   } = useCustomArrayItemContext();
 
   const handleCallApi = useCallback(async () => {
-    if (props?.uiSchema?.["ui:options"]?.[0]) {
+    if (props?.uiSchema?.['ui:options']?.[0]) {
       setLoading(true);
       const res = await fetch(
-        props?.uiSchema?.["ui:options"]?.[0].replace(":userId", index + 1),
+        props?.uiSchema?.['ui:options']?.[0].replace(':userId', index + 1)
       );
       const data = await res.json();
       setLoading(false);
-      eventBus.emit("call-" + index, { data });
+      eventBus.emit('call-' + index, { data });
       // setValue(data.title);
     }
   }, []);
@@ -37,13 +37,13 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
     <div>
       <input
         type="text"
-        value={value || ""}
+        value={value || ''}
         onChange={handleChange}
         placeholder={placeholder}
         required={required}
       />
       <button disabled={loading} onClick={handleCallApi}>
-        {loading ? "Loading .." : "Proceed"}
+        {loading ? 'Loading ..' : 'Proceed'}
       </button>
     </div>
   );
