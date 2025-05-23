@@ -1,6 +1,6 @@
-import type { ArrayFieldItemTemplateType, RJSFSchema } from "@rjsf/utils";
-import Provider from "./provider";
-import { memo } from "react";
+import type { ArrayFieldItemTemplateType, RJSFSchema } from '@rjsf/utils';
+import { memo } from 'react';
+import Provider from './provider';
 
 interface IProps {
   index: number;

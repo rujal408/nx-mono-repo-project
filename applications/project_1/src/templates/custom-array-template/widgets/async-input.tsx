@@ -42,7 +42,7 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
         placeholder={placeholder}
         required={required}
       />
-      <button disabled={loading} onClick={handleCallApi}>
+      <button type="button" disabled={loading} onClick={handleCallApi}>
         {loading ? 'Loading ..' : 'Proceed'}
       </button>
     </div>

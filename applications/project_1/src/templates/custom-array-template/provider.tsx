@@ -1,12 +1,12 @@
 import {
   createContext,
   memo,
-  use,
   useCallback,
+  useContext,
   useMemo,
   useState,
   type ReactNode,
-} from "react";
+} from 'react';
 
 export const ItemContext = createContext<{
   index: number;
@@ -17,7 +17,7 @@ export const ItemContext = createContext<{
 }>({
   index: -1,
   control: {
-    val: "",
+    val: '',
     setValue: (_: string) => {},
   },
 });
@@ -29,38 +29,35 @@ const Provider = ({
   index: number;
   children: ReactNode;
 }) => {
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState('');
 
   const setValue = useCallback((s: string) => {
     setVal(s);
   }, []);
 
-  const control = useMemo(() => {
-    return {
-      val,
-      setValue,
-    };
-  }, [val]);
+  // Memoize context value to prevent unnecessary updates
+  const contextValue = useMemo(
+    () => ({
+      index,
+      control: { val, setValue },
+    }),
+    [index, val, setValue]
+  );
 
   return (
-    <ItemContext
-      value={{
-        index,
-        control,
-      }}
-    >
+    <ItemContext.Provider value={contextValue}>
       <div className="array-item">{children}</div>
-    </ItemContext>
+    </ItemContext.Provider>
   );
 };
 
-export default Provider;
+export default memo(Provider);
 
 export const useCustomArrayItemContext = () => {
-  const context = use(ItemContext);
+  const context = useContext(ItemContext);
   if (!context) {
     throw new Error(
-      "useCustomArrayItemContext must be used within an ItemContext.Provider",
+      'useCustomArrayItemContext must be used within an ItemContext.Provider'
     );
   }
   return context;
