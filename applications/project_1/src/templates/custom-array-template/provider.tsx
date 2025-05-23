@@ -14,13 +14,7 @@ export const ItemContext = createContext<{
     val: string;
     setValue: (val: string) => void;
   };
-}>({
-  index: -1,
-  control: {
-    val: '',
-    setValue: (_: string) => {},
-  },
-});
+} | null>(null);
 
 const Provider = ({
   index,
