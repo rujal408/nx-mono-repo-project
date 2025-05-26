@@ -1041,7 +1041,7 @@ export const realExpDocExpSchema: RJSFSchema = {
       type: 'string',
       title: 'Search Current Address',
 
-      width: 'full',
+     
     },
     temporaryMap: {
       type: 'string',
