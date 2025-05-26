@@ -1,7 +1,7 @@
 import Form from "@rjsf/core";
 import validator from "@rjsf/validator-ajv8";
 import Nav from "../components/nav";
-import { docUploadSchema, realExpDocExpSchema } from "../constants/dependent";
+import { realExpDocExpSchema } from "../constants/dependent";
 
 const Dependent = () => (
   <div>

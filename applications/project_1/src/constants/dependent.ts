@@ -1,228 +1,211 @@
-import type { RJSFSchema } from "@rjsf/utils";
+import type { RJSFSchema } from '@rjsf/utils';
 
 export const dependentSchema = {
-  type: "object",
+  type: 'object',
   progressBar: true,
   required: [
-    "salutation",
-    "accountName",
-    "dateOfBirthBS",
-    "dateOfBirthAD",
-    "education",
-    "genders",
-    "nationality",
-    "preferredBranch",
-    "permanentCountry",
-    "mobileNumber",
-    "emailAddress",
-    "temporaryCountry",
-    "fatherName",
-    "motherName",
-    "grandFatherName",
-    "grandMotherName",
-    "marital_status",
-    "ppSizePhoto",
+    'salutation',
+    'accountName',
+    'dateOfBirthBS',
+    'dateOfBirthAD',
+    'education',
+    'genders',
+    'nationality',
+    'preferredBranch',
+    'permanentCountry',
+    'mobileNumber',
+    'emailAddress',
+    'temporaryCountry',
+    'fatherName',
+    'motherName',
+    'grandFatherName',
+    'grandMotherName',
+    'marital_status',
+    'ppSizePhoto',
 
-    "religion",
-    "nationalIdentityNo",
-    "nationalIssuedDistrict",
-    "nationalIssuedDateBS",
-    "nationalIssuedDateAD",
+    'religion',
+    'nationalIdentityNo',
+    'nationalIssuedDistrict',
+    'nationalIssuedDateBS',
+    'nationalIssuedDateAD',
   ],
   properties: {
     salutation: {
-      type: "string",
-      title: "Salutation",
-      group: "",
-      width: "full",
+      type: 'string',
+      title: 'Salutation',
+
+      width: 'full',
       errorMessage: {
-        required: "Salutation is required.",
+        required: 'Salutation is required.',
       },
     },
     minorCase: {
-      type: "boolean",
+      type: 'boolean',
       default: false,
     },
     accountName: {
-      type: "string",
-      title: "Account Name",
+      type: 'string',
+      title: 'Account Name',
       minLength: 1,
-
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     dateOfBirthBS: {
-      type: "string",
-      title: "Date of Birth (B.S)",
+      type: 'string',
+      title: 'Date of Birth (B.S)',
 
       minLength: 1,
-      errorMessage: {
-        type: "Invalid Date of Birth (B.S)",
-        minLength: "Required",
-      },
     },
     dateOfBirthAD: {
-      type: "string",
-      title: "Date of Birth (A.D)",
+      type: 'string',
+      title: 'Date of Birth (A.D)',
       minLength: 1,
-      errorMessage: {
-        type: "Invalid Date of Birth (A.D)",
-        minLength: "Required",
-      },
     },
     genders: {
-      type: "string",
-      title: "Gender",
-
-      errorMessage: {
-        type: "Invalid gender",
-      },
+      type: 'string',
+      title: 'Gender',
     },
     nationality: {
-      type: "string",
-      title: "Nationality",
+      type: 'string',
+      title: 'Nationality',
     },
     religion: {
-      type: "string",
-      title: "Religion",
+      type: 'string',
+      title: 'Religion',
     },
     education: {
-      type: "string",
-      enum: ["Literate", "Others"],
-      title: "Education",
+      type: 'string',
+      enum: ['Literate', 'Others'],
+      title: 'Education',
     },
     preferredBranch: {
-      type: "string",
-      title: "Branch",
+      type: 'string',
+      title: 'Branch',
     },
     permanentCountry: {
-      type: "string",
-      default: "c4dd1f9b-2322-11f0-8abe-02420a00460d",
-      title: "Permanent Country",
-      group: "permanentAddress",
+      type: 'string',
+      default: 'c4dd1f9b-2322-11f0-8abe-02420a00460d',
+      title: 'Permanent Country',
+      
     },
     permanentPhoneNo: {
-      type: "string",
-      title: "Phone No",
-      group: "permanentAddress",
+      type: 'string',
+      title: 'Phone No',
+      
     },
     permanentSearchAddress: {
-      type: "string",
-      width: "full",
-      title: "Search Permanent Address",
-      group: "permanentAddress",
+      type: 'string',
+      width: 'full',
+      title: 'Search Permanent Address',
+      
     },
     permanentMap: {
-      type: "string",
-      title: "Choose a Location",
-      group: "permanentAddress",
+      type: 'string',
+      title: 'Choose a Location',
+      
       isMapField: true,
-      width: "full",
+      width: 'full',
     },
     sameAsPermanent: {
-      type: "string",
-      title: "Same As Permanent Address",
-      enum: ["Yes", "No"],
+      type: 'string',
+      title: 'Same As Permanent Address',
+      enum: ['Yes', 'No'],
     },
     temporaryCountry: {
-      type: "string",
-      title: "Current Country",
-      default: "c4dd1f9b-2322-11f0-8abe-02420a00460d",
+      type: 'string',
+      title: 'Current Country',
+      default: 'c4dd1f9b-2322-11f0-8abe-02420a00460d',
     },
     temporaryPhoneNo: {
-      type: "string",
-      title: "Phone No",
+      type: 'string',
+      title: 'Phone No',
     },
     temporarySearchAddress: {
-      type: "string",
-      title: "Search Current Address",
+      type: 'string',
+      title: 'Search Current Address',
 
-      width: "full",
+      width: 'full',
     },
     temporaryMap: {
-      type: "string",
-      title: "Choose a Location",
+      type: 'string',
+      title: 'Choose a Location',
 
       isMapField: true,
-      width: "full",
+      width: 'full',
     },
     newNumber: {
-      type: "boolean",
-      title: "New Number ?",
+      type: 'boolean',
+      title: 'New Number ?',
       default: false,
-      group: "communicationDetails",
-      width: "full",
+      group: 'communicationDetails',
+      width: 'full',
     },
     phoneNo: {
-      type: ["string", "null"],
-      title: "Phone No",
-      group: "communicationDetails",
+      type: ['string', 'null'],
+      title: 'Phone No',
+      group: 'communicationDetails',
     },
     mobileNumber: {
-      type: "string",
-      title: "Mobile Number",
-      group: "communicationDetails",
-      pattern: "^9\\d{9}$",
+      type: 'string',
+      title: 'Mobile Number',
+      group: 'communicationDetails',
+      pattern: '^9\\d{9}$',
       errorMessage: {
         pattern:
-          "Mobile number must start with 9 and be exactly 10 digits long",
+          'Mobile number must start with 9 and be exactly 10 digits long',
       },
     },
     emailAddress: {
-      type: "string",
-      title: "Email Address",
-      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-      default: "",
+      type: 'string',
+      title: 'Email Address',
+      pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
+      default: '',
       errorMessage: {
-        pattern: "Invalid email address",
+        pattern: 'Invalid email address',
       },
-      group: "communicationDetails",
+      group: 'communicationDetails',
     },
     identificationDocuments: {
-      type: "array",
-      title: "Identification Details",
-      width: "full",
+      type: 'array',
+      title: 'Identification Details',
+      width: 'full',
       items: {
-        type: "object",
+        type: 'object',
         properties: {
           documentType: {
-            type: "string",
+            type: 'string',
             enum: [
-              "Citizenship",
-              "Passport",
-              "Driving License",
-              "Voter ID",
-              "Government ID",
-              "Pan Card",
-              "Birth Certificate",
-              "Other ID",
+              'Citizenship',
+              'Passport',
+              'Driving License',
+              'Voter ID',
+              'Government ID',
+              'Pan Card',
+              'Birth Certificate',
+              'Other ID',
             ],
-            title: "Identification Document Type",
+            title: 'Identification Document Type',
           },
           identityNo: {
-            type: "string",
-            title: "Identity No",
-            pattern: "^\\d+(?:-\\d+)*$",
+            type: 'string',
+            title: 'Identity No',
+            pattern: '^\\d+(?:-\\d+)*$',
             minLength: 1,
             errorMessage: {
-              pattern: "Only digits and dashes are allowed (e.g., 69-711-76)",
+              pattern: 'Only digits and dashes are allowed (e.g., 69-711-76)',
             },
           },
           issuedDistrict: {
-            type: "string",
-            title: "Issued District",
+            type: 'string',
+            title: 'Issued District',
           },
           issuedDateBS: {
-            type: "string",
-            format: "date",
-            title: "Issued Date (B.S)",
+            type: 'string',
+            format: 'date',
+            title: 'Issued Date (B.S)',
           },
           issuedDateAD: {
-            type: "string",
-            format: "date",
-            title: "Issued Date (A.D)",
+            type: 'string',
+            format: 'date',
+            title: 'Issued Date (A.D)',
           },
         },
         dependencies: {
@@ -230,280 +213,266 @@ export const dependentSchema = {
             if: {
               properties: {
                 documentType: {
-                  enum: ["Citizenship"],
+                  enum: ['Citizenship'],
                 },
               },
             },
             then: {},
             else: {
-              required: ["idateOfExpiryBS", "idateOfExpiryAD"],
+              required: ['idateOfExpiryBS', 'idateOfExpiryAD'],
               properties: {
                 idateOfExpiryBS: {
-                  type: "string",
-                  title: "Date of Expiry (B.S.)",
-                  format: "date",
+                  type: 'string',
+                  title: 'Date of Expiry (B.S.)',
+                  format: 'date',
                 },
                 idateOfExpiryAD: {
-                  type: "string",
-                  title: "Date of Expiry (A.D.)",
-                  format: "date",
+                  type: 'string',
+                  title: 'Date of Expiry (A.D.)',
+                  format: 'date',
                 },
               },
             },
           },
         },
         required: [
-          "documentType",
-          "identityNo",
-          "issuedDistrict",
-          "issuedDateBS",
-          "issuedDateAD",
+          'documentType',
+          'identityNo',
+          'issuedDistrict',
+          'issuedDateBS',
+          'issuedDateAD',
         ],
       },
       minItems: 1,
-      group: "identificationDetails",
+      group: 'identificationDetails',
     },
     panNo: {
-      type: ["number", "null"],
-      title: "Pan No.",
-      group: "panDetails",
+      type: ['number', 'null'],
+      title: 'Pan No.',
+      
     },
     panNoIssuedDateBS: {
-      type: "string",
-      format: "date",
-      title: "Pan No. Issued Date (B.S)",
-      group: "panDetails",
+      type: 'string',
+      format: 'date',
+      title: 'Pan No. Issued Date (B.S)',
+      
     },
     panNoIssuedDateAD: {
-      type: "string",
-      format: "date",
-      title: "Pan No. Issued Date (A.D)",
-      group: "panDetails",
+      type: 'string',
+      format: 'date',
+      title: 'Pan No. Issued Date (A.D)',
+      
     },
     nationalIdentityNo: {
-      type: ["string", "null"],
-      title: "Identity No",
+      type: ['string', 'null'],
+      title: 'Identity No',
 
-      pattern: "^\\d+(?:-\\d+)*$",
+      pattern: '^\\d+(?:-\\d+)*$',
       errorMessage: {
-        pattern: "Invalid national identity no.",
-        type: "required",
+        pattern: 'Invalid national identity no.',
+        type: 'required',
       },
     },
     nationalIssuedDistrict: {
-      type: "string",
-      title: "Issued District",
+      type: 'string',
+      title: 'Issued District',
 
       errorMessage: {
-        type: "Required",
+        type: 'Required',
       },
     },
     nationalIssuedDateBS: {
-      type: ["string", "null"],
-      format: "date",
-      title: "Issued Date (B.S)",
+      type: ['string', 'null'],
+      format: 'date',
+      title: 'Issued Date (B.S)',
     },
     nationalIssuedDateAD: {
-      type: ["string", "null"],
-      format: "date",
-      title: "Issued Date (A.D)",
+      type: ['string', 'null'],
+      format: 'date',
+      title: 'Issued Date (A.D)',
     },
     ppSizePhoto: {
-      type: "string",
-      title: "Passport Sized Photo",
-      group: "documents",
+      type: 'string',
+      title: 'Passport Sized Photo',
+      group: 'documents',
       isFileField: true,
-      width: "full",
+      width: 'full',
     },
     fatherName: {
-      type: "string",
+      type: 'string',
       title: "Father's Name",
-      group: "familyInformation",
+      
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     motherName: {
-      type: "string",
+      type: 'string',
       title: "Mother's Name",
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
-      group: "familyInformation",
+
+      
     },
     grandFatherName: {
-      type: "string",
+      type: 'string',
       title: "Grand Father's Name",
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
-      group: "familyInformation",
+
+      
     },
     grandMotherName: {
-      type: "string",
+      type: 'string',
       title: "Grand Mother's Name",
-      group: "familyInformation",
+      
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     marital_status: {
-      type: "string",
-      title: "Marital Status",
-      group: "familyInformation",
+      type: 'string',
+      title: 'Marital Status',
+      
       errorMessage: {
-        type: "Invalid status",
+        type: 'Invalid status',
       },
     },
   },
-  keys: ["formData.salutation"],
+  keys: ['formData.salutation'],
   dependencies: {
     minorCase: {
       oneOf: [
         {
           required: [
-            "guardianFirstName",
-            "guardianLastName",
-            "relationWithApplicant",
-            "identityDocumentType",
-            "identityNumber",
-            "guardianGrandFatherName",
-            "guardianFatherName",
-            "dateOfIssuanceAD",
-            "dateOfIssuanceBS",
-            "placeOfIssuance",
-            "guardainIdFront",
-            "candidateBirthCertificate",
-            "guardainIdBack",
-            "guardainPpSizePhoto",
+            'guardianFirstName',
+            'guardianLastName',
+            'relationWithApplicant',
+            'identityDocumentType',
+            'identityNumber',
+            'guardianGrandFatherName',
+            'guardianFatherName',
+            'dateOfIssuanceAD',
+            'dateOfIssuanceBS',
+            'placeOfIssuance',
+            'guardainIdFront',
+            'candidateBirthCertificate',
+            'guardainIdBack',
+            'guardainPpSizePhoto',
           ],
           properties: {
             minorCase: {
               const: true,
             },
             guardianFirstName: {
-              type: "string",
-              title: "Guardian First Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              type: 'string',
+              title: 'Guardian First Name',
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             guardianMiddleName: {
-              type: "string",
-              title: "Guardian Middle Name",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Guardian Middle Name',
+              group: 'guardianDetail',
             },
             guardianLastName: {
-              type: "string",
-              title: "Guardian Last Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              type: 'string',
+              title: 'Guardian Last Name',
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             relationWithApplicant: {
-              type: "string",
-              title: "Relation with Applicant",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Relation with Applicant',
+              group: 'guardianDetail',
             },
             guardianFatherName: {
-              type: "string",
+              type: 'string',
               title: "Father's Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             guardianGrandFatherName: {
-              type: "string",
+              type: 'string',
               title: "Grandfather's Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             identityDocumentType: {
-              type: "string",
-              title: "Guardian Identification Document Type",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Guardian Identification Document Type',
+              group: 'guardianDetail',
               enum: [
-                "Citizenship",
-                "Passport",
-                "Driving License",
-                "Voter ID",
-                "Government ID",
-                "Pan Card",
-                "Other ID",
+                'Citizenship',
+                'Passport',
+                'Driving License',
+                'Voter ID',
+                'Government ID',
+                'Pan Card',
+                'Other ID',
               ],
             },
             identityNumber: {
-              type: "string",
-              title: "ID Number",
+              type: 'string',
+              title: 'ID Number',
               maxLength: 50,
-              pattern: "^\\d+$",
+              pattern: '^\\d+$',
               errorMessage: {
-                pattern: "Numbers only",
+                pattern: 'Numbers only',
               },
-              group: "guardianDetail",
+              group: 'guardianDetail',
             },
             placeOfIssuance: {
-              type: "string",
-              title: "Place of Issuance",
+              type: 'string',
+              title: 'Place of Issuance',
               maxLength: 100,
-              group: "guardianDetail",
+              group: 'guardianDetail',
             },
             dateOfIssuanceBS: {
-              type: "string",
-              title: "Date of Issuance (B.S.)",
-              format: "date",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Date of Issuance (B.S.)',
+              format: 'date',
+              group: 'guardianDetail',
             },
             dateOfIssuanceAD: {
-              type: "string",
-              title: "Date of Issuance (A.D.)",
-              format: "date",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Date of Issuance (A.D.)',
+              format: 'date',
+              group: 'guardianDetail',
             },
             candidateBirthCertificate: {
-              type: "string",
-              title: "Candidate Birth Certificate",
-              group: "documents",
+              type: 'string',
+              title: 'Candidate Birth Certificate',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainIdFront: {
-              type: "string",
-              title: "Guardian Id Front",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Id Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainIdBack: {
-              type: "string",
-              title: "Guardian Id Back",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Id Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainPpSizePhoto: {
-              type: "string",
-              title: "Guardian Passport Sized Photo",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Passport Sized Photo',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
           },
           dependencies: {
@@ -511,25 +480,25 @@ export const dependentSchema = {
               if: {
                 properties: {
                   identityDocumentType: {
-                    enum: ["Citizenship"],
+                    enum: ['Citizenship'],
                   },
                 },
               },
               then: {},
               else: {
-                required: ["gDateOfExpiryAD", "gDateOfExpiryBS"],
+                required: ['gDateOfExpiryAD', 'gDateOfExpiryBS'],
                 properties: {
                   gDateOfExpiryBS: {
-                    type: "string",
-                    title: "Date of Expiry (B.S.)",
-                    format: "date",
-                    group: "guardianDetail",
+                    type: 'string',
+                    title: 'Date of Expiry (B.S.)',
+                    format: 'date',
+                    group: 'guardianDetail',
                   },
                   gDateOfExpiryAD: {
-                    type: "string",
-                    title: "Date of Expiry (A.D.)",
-                    format: "date",
-                    group: "guardianDetail",
+                    type: 'string',
+                    title: 'Date of Expiry (A.D.)',
+                    format: 'date',
+                    group: 'guardianDetail',
                   },
                 },
               },
@@ -537,38 +506,38 @@ export const dependentSchema = {
           },
         },
         {
-          required: ["citizenshipFront", "citizenshipBack"],
+          required: ['citizenshipFront', 'citizenshipBack'],
           properties: {
             minorCase: {
               const: false,
             },
             citizenshipFront: {
-              type: "string",
-              title: "Citizenship Front",
-              group: "documents",
+              type: 'string',
+              title: 'Citizenship Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             citizenshipBack: {
-              type: "string",
-              title: "Citizenship Back",
-              group: "documents",
+              type: 'string',
+              title: 'Citizenship Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             panCardFront: {
-              type: "string",
-              title: "Pancard Front",
-              group: "documents",
+              type: 'string',
+              title: 'Pancard Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             PanCardBack: {
-              type: "string",
-              title: "Pancard Back",
-              group: "documents",
+              type: 'string',
+              title: 'Pancard Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
           },
         },
@@ -578,77 +547,77 @@ export const dependentSchema = {
       if: {
         properties: {
           permanentCountry: {
-            enum: ["c4dd1f9b-2322-11f0-8abe-02420a00460d"],
+            enum: ['c4dd1f9b-2322-11f0-8abe-02420a00460d'],
           },
         },
       },
       then: {
         required: [
-          "permanentProvince",
-          "permanentDistrict",
-          "permanentLocalBody",
-          "permanentToleStreet",
-          "permanentWardNo",
+          'permanentProvince',
+          'permanentDistrict',
+          'permanentLocalBody',
+          'permanentToleStreet',
+          'permanentWardNo',
         ],
         properties: {
           permanentProvince: {
-            type: "string",
-            title: "Permanent Province",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent Province',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentDistrict: {
-            type: "string",
-            title: "Permanent District",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent District',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentLocalBody: {
-            type: "string",
-            title: "Permanent Local Body",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent Local Body',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentHouseNo: {
-            type: "string",
-            title: "House No",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'House No',
+            
           },
           permanentWardNo: {
-            type: "string",
-            title: "Ward No",
-            pattern: "^\\d+$",
+            type: 'string',
+            title: 'Ward No',
+            pattern: '^\\d+$',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
-            group: "permanentAddress",
+            
           },
           permanentToleStreet: {
-            type: "string",
-            title: "Tole/Street",
-            pattern: "^[a-zA-Z\\s]+$",
+            type: 'string',
+            title: 'Tole/Street',
+            pattern: '^[a-zA-Z\\s]+$',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
-            group: "permanentAddress",
+            
           },
         },
       },
       else: {
-        required: ["permanentFullAddress"],
+        required: ['permanentFullAddress'],
         properties: {
           permanentFullAddress: {
-            type: "string",
-            title: "Full Address ",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Full Address ',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
@@ -658,73 +627,73 @@ export const dependentSchema = {
       if: {
         properties: {
           temporaryCountry: {
-            enum: ["c4dd1f9b-2322-11f0-8abe-02420a00460d"],
+            enum: ['c4dd1f9b-2322-11f0-8abe-02420a00460d'],
           },
         },
       },
       then: {
         required: [
-          "temporaryProvince",
-          "temporaryDistrict",
-          "temporaryLocalBody",
-          "temporaryToleStreet",
-          "temporaryWardNo",
+          'temporaryProvince',
+          'temporaryDistrict',
+          'temporaryLocalBody',
+          'temporaryToleStreet',
+          'temporaryWardNo',
         ],
         properties: {
           temporaryProvince: {
-            type: "string",
-            title: "Current Province",
+            type: 'string',
+            title: 'Current Province',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryDistrict: {
-            type: "string",
-            title: "Current District",
+            type: 'string',
+            title: 'Current District',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryLocalBody: {
-            type: "string",
-            title: "Current Local Body",
+            type: 'string',
+            title: 'Current Local Body',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryHouseNo: {
-            type: "string",
-            title: "House No",
+            type: 'string',
+            title: 'House No',
           },
           temporaryWardNo: {
-            type: "string",
-            title: "Ward No",
+            type: 'string',
+            title: 'Ward No',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryToleStreet: {
-            type: "string",
-            title: "Tole/Street",
+            type: 'string',
+            title: 'Tole/Street',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
       },
       else: {
-        required: ["temporaryFullAddress"],
+        required: ['temporaryFullAddress'],
         properties: {
           temporaryFullAddress: {
-            type: "string",
-            title: "Full Address ",
+            type: 'string',
+            title: 'Full Address ',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
@@ -734,7 +703,7 @@ export const dependentSchema = {
       if: {
         properties: {
           marital_status: {
-            enum: ["1"],
+            enum: ['1'],
           },
         },
       },
@@ -742,61 +711,52 @@ export const dependentSchema = {
       else: {
         properties: {
           spouseName: {
-            type: "string",
-            title: "Spouse Name",
+            type: 'string',
+            title: 'Spouse Name',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
           childrenDetails: {
-            type: "array",
-            width: "full",
-            group: "children",
+            type: 'array',
+            width: 'full',
+            group: 'children',
             items: {
-              type: "object",
+              type: 'object',
               properties: {
                 childType: {
-                  type: "string",
-                  title: "Type",
-                  enum: ["Son", "Daughter"],
+                  type: 'string',
+                  title: 'Type',
+                  enum: ['Son', 'Daughter'],
                 },
                 name: {
-                  type: "string",
-                  title: "Name",
+                  type: 'string',
+                  title: 'Name',
                 },
               },
             },
           },
           daughterInLaw: {
-            type: ["string", "null"],
-            title: "Daughter In Law",
-            group: "familyInformation",
+            type: ['string', 'null'],
+            title: 'Daughter In Law',
+            
           },
           motherInLaw: {
-            type: "string",
-            title: "Mother In Law",
+            type: 'string',
+            title: 'Mother In Law',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
           fatherInLaw: {
-            type: "string",
-            title: "Father In Law",
+            type: 'string',
+            title: 'Father In Law',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
         },
-        required: ["spouseName", "motherInLaw", "fatherInLaw"],
+        required: ['spouseName', 'motherInLaw', 'fatherInLaw'],
       },
     },
     sameAsPermanent: {
@@ -804,7 +764,7 @@ export const dependentSchema = {
         {
           properties: {
             sameAsPermanent: {
-              const: "Yes",
+              const: 'Yes',
             },
             temporaryCountry: {
               readOnly: true,
@@ -841,7 +801,7 @@ export const dependentSchema = {
         {
           properties: {
             sameAsPermanent: {
-              const: "No",
+              const: 'No',
             },
             temporaryCountry: {
               readOnly: false,
@@ -861,57 +821,57 @@ export const dependentSchema = {
       then: {
         properties: {
           newMobileNumber: {
-            type: "string",
-            title: "New Mobile Number",
-            group: "communicationDetails",
-            pattern: "^9\\d{9}$",
+            type: 'string',
+            title: 'New Mobile Number',
+            group: 'communicationDetails',
+            pattern: '^9\\d{9}$',
             errorMessage: {
               pattern:
-                "Mobile number must start with 9 and be exactly 10 digits long",
+                'Mobile number must start with 9 and be exactly 10 digits long',
             },
           },
           newNumberDocument: {
-            type: "string",
-            title: "New Number",
-            group: "documents",
+            type: 'string',
+            title: 'New Number',
+            group: 'documents',
             isFileField: true,
-            width: "full",
+            width: 'full',
           },
         },
-        required: ["newMobileNumber"],
+        required: ['newMobileNumber'],
       },
     },
   },
 };
 
-const docTypes = ["PDF", "Word", "Excel"];
+const docTypes = ['PDF', 'Word', 'Excel'];
 
 export const docUploadSchema: RJSFSchema = {
-  type: "object",
-  title: "User Docs",
+  type: 'object',
+  title: 'User Docs',
   properties: {
     documents: {
-      title: "User Info",
-      type: "array",
+      title: 'User Info',
+      type: 'array',
       items: {
-        type: "object",
+        type: 'object',
         properties: {
           docType: {
-            type: "string",
-            title: "Document Type",
+            type: 'string',
+            title: 'Document Type',
             enum: docTypes,
-            default: "PDF",
+            default: 'PDF',
           },
           name: {
-            type: "string",
-            title: "User Name",
+            type: 'string',
+            title: 'User Name',
           },
         },
-        required: ["docType", "name"],
+        required: ['docType', 'name'],
       },
     },
     documentUpload: {
-      type: "object",
+      type: 'object',
       properties: {},
     },
   },
@@ -922,11 +882,11 @@ export const docUploadSchema: RJSFSchema = {
           properties: {
             documents: {
               contains: {
-                type: "object",
+                type: 'object',
                 properties: {
                   docType: { const: docType },
                 },
-                required: ["docType"],
+                required: ['docType'],
               },
             },
           },
@@ -936,7 +896,7 @@ export const docUploadSchema: RJSFSchema = {
             documentUpload: {
               properties: {
                 [`${docType.toLowerCase()}Document`]: {
-                  type: "string",
+                  type: 'string',
                   title: `${docType} Document`,
                 },
               },
@@ -949,231 +909,214 @@ export const docUploadSchema: RJSFSchema = {
 };
 
 const documentTypes = [
-  "Citizenship",
-  "Passport",
-  "DrivingLicense",
-  "VoterID",
-  "GovernmentID",
-  "PanCard",
-  "BirthCertificate",
-  "OtherID",
+  'Citizenship',
+  'Passport',
+  'DrivingLicense',
+  'VoterID',
+  'GovernmentID',
+  'PanCard',
+  'BirthCertificate',
+  'OtherID',
 ];
 
 export const realExpDocExpSchema: RJSFSchema = {
-  type: "object",
+  type: 'object',
   progressBar: true,
   required: [
-    "salutation",
-    "accountName",
-    "dateOfBirthBS",
-    "dateOfBirthAD",
-    "education",
-    "genders",
-    "nationality",
-    "preferredBranch",
-    "permanentCountry",
-    "mobileNumber",
-    "emailAddress",
-    "temporaryCountry",
-    "fatherName",
-    "motherName",
-    "grandFatherName",
-    "grandMotherName",
-    "marital_status",
-    "ppSizePhoto",
+    'salutation',
+    'accountName',
+    'dateOfBirthBS',
+    'dateOfBirthAD',
+    'education',
+    'genders',
+    'nationality',
+    'preferredBranch',
+    'permanentCountry',
+    'mobileNumber',
+    'emailAddress',
+    'temporaryCountry',
+    'fatherName',
+    'motherName',
+    'grandFatherName',
+    'grandMotherName',
+    'marital_status',
+    'ppSizePhoto',
 
-    "religion",
-    "nationalIdentityNo",
-    "nationalIssuedDistrict",
-    "nationalIssuedDateBS",
-    "nationalIssuedDateAD",
+    'religion',
+    'nationalIdentityNo',
+    'nationalIssuedDistrict',
+    'nationalIssuedDateBS',
+    'nationalIssuedDateAD',
   ],
   properties: {
     salutation: {
-      type: "string",
-      title: "Salutation",
-      group: "",
-      width: "full",
+      type: 'string',
+      title: 'Salutation',
+
+      width: 'full',
       errorMessage: {
-        required: "Salutation is required.",
+        required: 'Salutation is required.',
       },
     },
     minorCase: {
-      type: "boolean",
+      type: 'boolean',
       default: false,
     },
     accountName: {
-      type: "string",
-      title: "Account Name",
+      type: 'string',
+      title: 'Account Name',
       minLength: 1,
-
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     dateOfBirthBS: {
-      type: "string",
-      title: "Date of Birth (B.S)",
+      type: 'string',
+      title: 'Date of Birth (B.S)',
 
       minLength: 1,
-      errorMessage: {
-        type: "Invalid Date of Birth (B.S)",
-        minLength: "Required",
-      },
     },
     dateOfBirthAD: {
-      type: "string",
-      title: "Date of Birth (A.D)",
+      type: 'string',
+      title: 'Date of Birth (A.D)',
       minLength: 1,
-      errorMessage: {
-        type: "Invalid Date of Birth (A.D)",
-        minLength: "Required",
-      },
     },
     genders: {
-      type: "string",
-      title: "Gender",
-
-      errorMessage: {
-        type: "Invalid gender",
-      },
+      type: 'string',
+      title: 'Gender',
     },
     nationality: {
-      type: "string",
-      title: "Nationality",
+      type: 'string',
+      title: 'Nationality',
     },
     religion: {
-      type: "string",
-      title: "Religion",
+      type: 'string',
+      title: 'Religion',
     },
     education: {
-      type: "string",
-      enum: ["Literate", "Others"],
-      title: "Education",
+      type: 'string',
+      enum: ['Literate', 'Others'],
+      title: 'Education',
     },
     preferredBranch: {
-      type: "string",
-      title: "Branch",
+      type: 'string',
+      title: 'Branch',
     },
     permanentCountry: {
-      type: "string",
-      default: "c4dd1f9b-2322-11f0-8abe-02420a00460d",
-      title: "Permanent Country",
-      group: "permanentAddress",
+      type: 'string',
+      default: 'c4dd1f9b-2322-11f0-8abe-02420a00460d',
+      title: 'Permanent Country',
+      
     },
     permanentPhoneNo: {
-      type: "string",
-      title: "Phone No",
-      group: "permanentAddress",
+      type: 'string',
+      title: 'Phone No',
+      
     },
     permanentSearchAddress: {
-      type: "string",
-      width: "full",
-      title: "Search Permanent Address",
-      group: "permanentAddress",
+      type: 'string',
+      width: 'full',
+      title: 'Search Permanent Address',
+      
     },
     permanentMap: {
-      type: "string",
-      title: "Choose a Location",
-      group: "permanentAddress",
+      type: 'string',
+      title: 'Choose a Location',
+      
       isMapField: true,
-      width: "full",
+      width: 'full',
     },
     sameAsPermanent: {
-      type: "string",
-      title: "Same As Permanent Address",
-      enum: ["Yes", "No"],
+      type: 'string',
+      title: 'Same As Permanent Address',
+      enum: ['Yes', 'No'],
     },
     temporaryCountry: {
-      type: "string",
-      title: "Current Country",
-      default: "c4dd1f9b-2322-11f0-8abe-02420a00460d",
+      type: 'string',
+      title: 'Current Country',
+      default: 'c4dd1f9b-2322-11f0-8abe-02420a00460d',
     },
     temporaryPhoneNo: {
-      type: "string",
-      title: "Phone No",
+      type: 'string',
+      title: 'Phone No',
     },
     temporarySearchAddress: {
-      type: "string",
-      title: "Search Current Address",
+      type: 'string',
+      title: 'Search Current Address',
 
-      width: "full",
+      width: 'full',
     },
     temporaryMap: {
-      type: "string",
-      title: "Choose a Location",
+      type: 'string',
+      title: 'Choose a Location',
 
       isMapField: true,
-      width: "full",
+      width: 'full',
     },
     newNumber: {
-      type: "boolean",
-      title: "New Number ?",
+      type: 'boolean',
+      title: 'New Number ?',
       default: false,
-      group: "communicationDetails",
-      width: "full",
+      group: 'communicationDetails',
+      width: 'full',
     },
     phoneNo: {
-      type: ["string", "null"],
-      title: "Phone No",
-      group: "communicationDetails",
+      type: ['string', 'null'],
+      title: 'Phone No',
+      group: 'communicationDetails',
     },
     mobileNumber: {
-      type: "string",
-      title: "Mobile Number",
-      group: "communicationDetails",
-      pattern: "^9\\d{9}$",
+      type: 'string',
+      title: 'Mobile Number',
+      group: 'communicationDetails',
+      pattern: '^9\\d{9}$',
       errorMessage: {
         pattern:
-          "Mobile number must start with 9 and be exactly 10 digits long",
+          'Mobile number must start with 9 and be exactly 10 digits long',
       },
     },
     emailAddress: {
-      type: "string",
-      title: "Email Address",
-      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-      default: "",
+      type: 'string',
+      title: 'Email Address',
+      pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
+      default: '',
       errorMessage: {
-        pattern: "Invalid email address",
+        pattern: 'Invalid email address',
       },
-      group: "communicationDetails",
+      group: 'communicationDetails',
     },
     identificationDocuments: {
-      type: "array",
-      title: "Identification Details",
-      width: "full",
+      type: 'array',
+      title: 'Identification Details',
+      width: 'full',
       items: {
-        type: "object",
+        type: 'object',
         properties: {
           documentType: {
-            type: "string",
+            type: 'string',
             enum: documentTypes,
-            title: "Identification Document Type",
-            default: "Passport",
+            title: 'Identification Document Type',
+            default: 'Passport',
           },
           identityNo: {
-            type: "string",
-            title: "Identity No",
-            pattern: "^\\d+(?:-\\d+)*$",
+            type: 'string',
+            title: 'Identity No',
+            pattern: '^\\d+(?:-\\d+)*$',
             minLength: 1,
             errorMessage: {
-              pattern: "Only digits and dashes are allowed (e.g., 69-711-76)",
+              pattern: 'Only digits and dashes are allowed (e.g., 69-711-76)',
             },
           },
           issuedDistrict: {
-            type: "string",
-            title: "Issued District",
+            type: 'string',
+            title: 'Issued District',
           },
           issuedDateBS: {
-            type: "string",
-            format: "date",
-            title: "Issued Date (B.S)",
+            type: 'string',
+            format: 'date',
+            title: 'Issued Date (B.S)',
           },
           issuedDateAD: {
-            type: "string",
-            format: "date",
-            title: "Issued Date (A.D)",
+            type: 'string',
+            format: 'date',
+            title: 'Issued Date (A.D)',
           },
         },
         dependencies: {
@@ -1181,284 +1124,270 @@ export const realExpDocExpSchema: RJSFSchema = {
             if: {
               properties: {
                 documentType: {
-                  enum: ["Citizenship"],
+                  enum: ['Citizenship'],
                 },
               },
             },
             then: {},
             else: {
-              required: ["idateOfExpiryBS", "idateOfExpiryAD"],
+              required: ['idateOfExpiryBS', 'idateOfExpiryAD'],
               properties: {
                 idateOfExpiryBS: {
-                  type: "string",
-                  title: "Date of Expiry (B.S.)",
-                  format: "date",
+                  type: 'string',
+                  title: 'Date of Expiry (B.S.)',
+                  format: 'date',
                 },
                 idateOfExpiryAD: {
-                  type: "string",
-                  title: "Date of Expiry (A.D.)",
-                  format: "date",
+                  type: 'string',
+                  title: 'Date of Expiry (A.D.)',
+                  format: 'date',
                 },
               },
             },
           },
         },
         required: [
-          "documentType",
-          "identityNo",
-          "issuedDistrict",
-          "issuedDateBS",
-          "issuedDateAD",
+          'documentType',
+          'identityNo',
+          'issuedDistrict',
+          'issuedDateBS',
+          'issuedDateAD',
         ],
       },
       minItems: 1,
-      group: "identificationDetails",
+      group: 'identificationDetails',
     },
     documentUpload: {
-      type: "object",
+      type: 'object',
       properties: {},
     },
     panNo: {
-      type: ["number", "null"],
-      title: "Pan No.",
-      group: "panDetails",
+      type: ['number', 'null'],
+      title: 'Pan No.',
+      
     },
     panNoIssuedDateBS: {
-      type: "string",
-      format: "date",
-      title: "Pan No. Issued Date (B.S)",
-      group: "panDetails",
+      type: 'string',
+      format: 'date',
+      title: 'Pan No. Issued Date (B.S)',
+      
     },
     panNoIssuedDateAD: {
-      type: "string",
-      format: "date",
-      title: "Pan No. Issued Date (A.D)",
-      group: "panDetails",
+      type: 'string',
+      format: 'date',
+      title: 'Pan No. Issued Date (A.D)',
+      
     },
     nationalIdentityNo: {
-      type: ["string", "null"],
-      title: "Identity No",
+      type: ['string', 'null'],
+      title: 'Identity No',
 
-      pattern: "^\\d+(?:-\\d+)*$",
+      pattern: '^\\d+(?:-\\d+)*$',
       errorMessage: {
-        pattern: "Invalid national identity no.",
-        type: "required",
+        pattern: 'Invalid national identity no.',
+        type: 'required',
       },
     },
     nationalIssuedDistrict: {
-      type: "string",
-      title: "Issued District",
+      type: 'string',
+      title: 'Issued District',
 
       errorMessage: {
-        type: "Required",
+        type: 'Required',
       },
     },
     nationalIssuedDateBS: {
-      type: ["string", "null"],
-      format: "date",
-      title: "Issued Date (B.S)",
+      type: ['string', 'null'],
+      format: 'date',
+      title: 'Issued Date (B.S)',
     },
     nationalIssuedDateAD: {
-      type: ["string", "null"],
-      format: "date",
-      title: "Issued Date (A.D)",
+      type: ['string', 'null'],
+      format: 'date',
+      title: 'Issued Date (A.D)',
     },
     ppSizePhoto: {
-      type: "string",
-      title: "Passport Sized Photo",
-      group: "documents",
+      type: 'string',
+      title: 'Passport Sized Photo',
+      group: 'documents',
       isFileField: true,
-      width: "full",
+      width: 'full',
     },
     fatherName: {
-      type: "string",
+      type: 'string',
       title: "Father's Name",
-      group: "familyInformation",
+      
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     motherName: {
-      type: "string",
+      type: 'string',
       title: "Mother's Name",
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
-      group: "familyInformation",
+
+      
     },
     grandFatherName: {
-      type: "string",
+      type: 'string',
       title: "Grand Father's Name",
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
-      group: "familyInformation",
+
+      
     },
     grandMotherName: {
-      type: "string",
+      type: 'string',
       title: "Grand Mother's Name",
-      group: "familyInformation",
+      
       minLength: 1,
-      errorMessage: {
-        type: "Required",
-        minLength: "Required",
-      },
     },
     marital_status: {
-      type: "string",
-      title: "Marital Status",
-      group: "familyInformation",
+      type: 'string',
+      title: 'Marital Status',
+      
       errorMessage: {
-        type: "Invalid status",
+        type: 'Invalid status',
       },
     },
   },
-  keys: ["formData.salutation"],
+  keys: ['formData.salutation'],
   dependencies: {
     minorCase: {
       oneOf: [
         {
           required: [
-            "guardianFirstName",
-            "guardianLastName",
-            "relationWithApplicant",
-            "identityDocumentType",
-            "identityNumber",
-            "guardianGrandFatherName",
-            "guardianFatherName",
-            "dateOfIssuanceAD",
-            "dateOfIssuanceBS",
-            "placeOfIssuance",
-            "guardainIdFront",
-            "candidateBirthCertificate",
-            "guardainIdBack",
-            "guardainPpSizePhoto",
+            'guardianFirstName',
+            'guardianLastName',
+            'relationWithApplicant',
+            'identityDocumentType',
+            'identityNumber',
+            'guardianGrandFatherName',
+            'guardianFatherName',
+            'dateOfIssuanceAD',
+            'dateOfIssuanceBS',
+            'placeOfIssuance',
+            'guardainIdFront',
+            'candidateBirthCertificate',
+            'guardainIdBack',
+            'guardainPpSizePhoto',
           ],
           properties: {
             minorCase: {
               const: true,
             },
             guardianFirstName: {
-              type: "string",
-              title: "Guardian First Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              type: 'string',
+              title: 'Guardian First Name',
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             guardianMiddleName: {
-              type: "string",
-              title: "Guardian Middle Name",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Guardian Middle Name',
+              group: 'guardianDetail',
             },
             guardianLastName: {
-              type: "string",
-              title: "Guardian Last Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              type: 'string',
+              title: 'Guardian Last Name',
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             relationWithApplicant: {
-              type: "string",
-              title: "Relation with Applicant",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Relation with Applicant',
+              group: 'guardianDetail',
             },
             guardianFatherName: {
-              type: "string",
+              type: 'string',
               title: "Father's Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             guardianGrandFatherName: {
-              type: "string",
+              type: 'string',
               title: "Grandfather's Name",
-              group: "guardianDetail",
-              pattern: "^[a-zA-Z\\s]+$",
+              group: 'guardianDetail',
+              pattern: '^[a-zA-Z\\s]+$',
               errorMessage: {
-                pattern: "Alphabets and spaces only",
+                pattern: 'Alphabets and spaces only',
               },
             },
             identityDocumentType: {
-              type: "string",
-              title: "Guardian Identification Document Type",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Guardian Identification Document Type',
+              group: 'guardianDetail',
               enum: [
-                "Citizenship",
-                "Passport",
-                "Driving License",
-                "Voter ID",
-                "Government ID",
-                "Pan Card",
-                "Other ID",
+                'Citizenship',
+                'Passport',
+                'Driving License',
+                'Voter ID',
+                'Government ID',
+                'Pan Card',
+                'Other ID',
               ],
             },
             identityNumber: {
-              type: "string",
-              title: "ID Number",
+              type: 'string',
+              title: 'ID Number',
               maxLength: 50,
-              pattern: "^\\d+$",
+              pattern: '^\\d+$',
               errorMessage: {
-                pattern: "Numbers only",
+                pattern: 'Numbers only',
               },
-              group: "guardianDetail",
+              group: 'guardianDetail',
             },
             placeOfIssuance: {
-              type: "string",
-              title: "Place of Issuance",
+              type: 'string',
+              title: 'Place of Issuance',
               maxLength: 100,
-              group: "guardianDetail",
+              group: 'guardianDetail',
             },
             dateOfIssuanceBS: {
-              type: "string",
-              title: "Date of Issuance (B.S.)",
-              format: "date",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Date of Issuance (B.S.)',
+              format: 'date',
+              group: 'guardianDetail',
             },
             dateOfIssuanceAD: {
-              type: "string",
-              title: "Date of Issuance (A.D.)",
-              format: "date",
-              group: "guardianDetail",
+              type: 'string',
+              title: 'Date of Issuance (A.D.)',
+              format: 'date',
+              group: 'guardianDetail',
             },
             candidateBirthCertificate: {
-              type: "string",
-              title: "Candidate Birth Certificate",
-              group: "documents",
+              type: 'string',
+              title: 'Candidate Birth Certificate',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainIdFront: {
-              type: "string",
-              title: "Guardian Id Front",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Id Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainIdBack: {
-              type: "string",
-              title: "Guardian Id Back",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Id Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             guardainPpSizePhoto: {
-              type: "string",
-              title: "Guardian Passport Sized Photo",
-              group: "documents",
+              type: 'string',
+              title: 'Guardian Passport Sized Photo',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
           },
           dependencies: {
@@ -1466,25 +1395,25 @@ export const realExpDocExpSchema: RJSFSchema = {
               if: {
                 properties: {
                   identityDocumentType: {
-                    enum: ["Citizenship"],
+                    enum: ['Citizenship'],
                   },
                 },
               },
               then: {},
               else: {
-                required: ["gDateOfExpiryAD", "gDateOfExpiryBS"],
+                required: ['gDateOfExpiryAD', 'gDateOfExpiryBS'],
                 properties: {
                   gDateOfExpiryBS: {
-                    type: "string",
-                    title: "Date of Expiry (B.S.)",
-                    format: "date",
-                    group: "guardianDetail",
+                    type: 'string',
+                    title: 'Date of Expiry (B.S.)',
+                    format: 'date',
+                    group: 'guardianDetail',
                   },
                   gDateOfExpiryAD: {
-                    type: "string",
-                    title: "Date of Expiry (A.D.)",
-                    format: "date",
-                    group: "guardianDetail",
+                    type: 'string',
+                    title: 'Date of Expiry (A.D.)',
+                    format: 'date',
+                    group: 'guardianDetail',
                   },
                 },
               },
@@ -1492,38 +1421,38 @@ export const realExpDocExpSchema: RJSFSchema = {
           },
         },
         {
-          required: ["citizenshipFront", "citizenshipBack"],
+          required: ['citizenshipFront', 'citizenshipBack'],
           properties: {
             minorCase: {
               const: false,
             },
             citizenshipFront: {
-              type: "string",
-              title: "Citizenship Front",
-              group: "documents",
+              type: 'string',
+              title: 'Citizenship Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             citizenshipBack: {
-              type: "string",
-              title: "Citizenship Back",
-              group: "documents",
+              type: 'string',
+              title: 'Citizenship Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             panCardFront: {
-              type: "string",
-              title: "Pancard Front",
-              group: "documents",
+              type: 'string',
+              title: 'Pancard Front',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
             PanCardBack: {
-              type: "string",
-              title: "Pancard Back",
-              group: "documents",
+              type: 'string',
+              title: 'Pancard Back',
+              group: 'documents',
               isFileField: true,
-              width: "full",
+              width: 'full',
             },
           },
         },
@@ -1533,77 +1462,77 @@ export const realExpDocExpSchema: RJSFSchema = {
       if: {
         properties: {
           permanentCountry: {
-            enum: ["c4dd1f9b-2322-11f0-8abe-02420a00460d"],
+            enum: ['c4dd1f9b-2322-11f0-8abe-02420a00460d'],
           },
         },
       },
       then: {
         required: [
-          "permanentProvince",
-          "permanentDistrict",
-          "permanentLocalBody",
-          "permanentToleStreet",
-          "permanentWardNo",
+          'permanentProvince',
+          'permanentDistrict',
+          'permanentLocalBody',
+          'permanentToleStreet',
+          'permanentWardNo',
         ],
         properties: {
           permanentProvince: {
-            type: "string",
-            title: "Permanent Province",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent Province',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentDistrict: {
-            type: "string",
-            title: "Permanent District",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent District',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentLocalBody: {
-            type: "string",
-            title: "Permanent Local Body",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Permanent Local Body',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           permanentHouseNo: {
-            type: "string",
-            title: "House No",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'House No',
+            
           },
           permanentWardNo: {
-            type: "string",
-            title: "Ward No",
-            pattern: "^\\d+$",
+            type: 'string',
+            title: 'Ward No',
+            pattern: '^\\d+$',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
-            group: "permanentAddress",
+            
           },
           permanentToleStreet: {
-            type: "string",
-            title: "Tole/Street",
-            pattern: "^[a-zA-Z\\s]+$",
+            type: 'string',
+            title: 'Tole/Street',
+            pattern: '^[a-zA-Z\\s]+$',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
-            group: "permanentAddress",
+            
           },
         },
       },
       else: {
-        required: ["permanentFullAddress"],
+        required: ['permanentFullAddress'],
         properties: {
           permanentFullAddress: {
-            type: "string",
-            title: "Full Address ",
-            group: "permanentAddress",
+            type: 'string',
+            title: 'Full Address ',
+            
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
@@ -1613,73 +1542,73 @@ export const realExpDocExpSchema: RJSFSchema = {
       if: {
         properties: {
           temporaryCountry: {
-            enum: ["c4dd1f9b-2322-11f0-8abe-02420a00460d"],
+            enum: ['c4dd1f9b-2322-11f0-8abe-02420a00460d'],
           },
         },
       },
       then: {
         required: [
-          "temporaryProvince",
-          "temporaryDistrict",
-          "temporaryLocalBody",
-          "temporaryToleStreet",
-          "temporaryWardNo",
+          'temporaryProvince',
+          'temporaryDistrict',
+          'temporaryLocalBody',
+          'temporaryToleStreet',
+          'temporaryWardNo',
         ],
         properties: {
           temporaryProvince: {
-            type: "string",
-            title: "Current Province",
+            type: 'string',
+            title: 'Current Province',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryDistrict: {
-            type: "string",
-            title: "Current District",
+            type: 'string',
+            title: 'Current District',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryLocalBody: {
-            type: "string",
-            title: "Current Local Body",
+            type: 'string',
+            title: 'Current Local Body',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryHouseNo: {
-            type: "string",
-            title: "House No",
+            type: 'string',
+            title: 'House No',
           },
           temporaryWardNo: {
-            type: "string",
-            title: "Ward No",
+            type: 'string',
+            title: 'Ward No',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
           temporaryToleStreet: {
-            type: "string",
-            title: "Tole/Street",
+            type: 'string',
+            title: 'Tole/Street',
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
       },
       else: {
-        required: ["temporaryFullAddress"],
+        required: ['temporaryFullAddress'],
         properties: {
           temporaryFullAddress: {
-            type: "string",
-            title: "Full Address ",
+            type: 'string',
+            title: 'Full Address ',
 
             errorMessage: {
-              type: "Required",
+              type: 'Required',
             },
           },
         },
@@ -1689,7 +1618,7 @@ export const realExpDocExpSchema: RJSFSchema = {
       if: {
         properties: {
           marital_status: {
-            enum: ["1"],
+            enum: ['1'],
           },
         },
       },
@@ -1697,61 +1626,52 @@ export const realExpDocExpSchema: RJSFSchema = {
       else: {
         properties: {
           spouseName: {
-            type: "string",
-            title: "Spouse Name",
+            type: 'string',
+            title: 'Spouse Name',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
           childrenDetails: {
-            type: "array",
-            width: "full",
-            group: "children",
+            type: 'array',
+            width: 'full',
+            group: 'children',
             items: {
-              type: "object",
+              type: 'object',
               properties: {
                 childType: {
-                  type: "string",
-                  title: "Type",
-                  enum: ["Son", "Daughter"],
+                  type: 'string',
+                  title: 'Type',
+                  enum: ['Son', 'Daughter'],
                 },
                 name: {
-                  type: "string",
-                  title: "Name",
+                  type: 'string',
+                  title: 'Name',
                 },
               },
             },
           },
           daughterInLaw: {
-            type: ["string", "null"],
-            title: "Daughter In Law",
-            group: "familyInformation",
+            type: ['string', 'null'],
+            title: 'Daughter In Law',
+            
           },
           motherInLaw: {
-            type: "string",
-            title: "Mother In Law",
+            type: 'string',
+            title: 'Mother In Law',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
           fatherInLaw: {
-            type: "string",
-            title: "Father In Law",
+            type: 'string',
+            title: 'Father In Law',
             minLength: 1,
-            group: "familyInformation",
-            errorMessage: {
-              type: "Required",
-              minLength: "Required",
-            },
+            
+            
           },
         },
-        required: ["spouseName", "motherInLaw", "fatherInLaw"],
+        required: ['spouseName', 'motherInLaw', 'fatherInLaw'],
       },
     },
     sameAsPermanent: {
@@ -1759,7 +1679,7 @@ export const realExpDocExpSchema: RJSFSchema = {
         {
           properties: {
             sameAsPermanent: {
-              const: "Yes",
+              const: 'Yes',
             },
             temporaryCountry: {
               readOnly: true,
@@ -1796,7 +1716,7 @@ export const realExpDocExpSchema: RJSFSchema = {
         {
           properties: {
             sameAsPermanent: {
-              const: "No",
+              const: 'No',
             },
             temporaryCountry: {
               readOnly: false,
@@ -1816,24 +1736,24 @@ export const realExpDocExpSchema: RJSFSchema = {
       then: {
         properties: {
           newMobileNumber: {
-            type: "string",
-            title: "New Mobile Number",
-            group: "communicationDetails",
-            pattern: "^9\\d{9}$",
+            type: 'string',
+            title: 'New Mobile Number',
+            group: 'communicationDetails',
+            pattern: '^9\\d{9}$',
             errorMessage: {
               pattern:
-                "Mobile number must start with 9 and be exactly 10 digits long",
+                'Mobile number must start with 9 and be exactly 10 digits long',
             },
           },
           newNumberDocument: {
-            type: "string",
-            title: "New Number",
-            group: "documents",
+            type: 'string',
+            title: 'New Number',
+            group: 'documents',
             isFileField: true,
-            width: "full",
+            width: 'full',
           },
         },
-        required: ["newMobileNumber"],
+        required: ['newMobileNumber'],
       },
     },
     identificationDocuments: {
@@ -1842,11 +1762,11 @@ export const realExpDocExpSchema: RJSFSchema = {
           properties: {
             identificationDocuments: {
               contains: {
-                type: "object",
+                type: 'object',
                 properties: {
                   documentType: { const: docType },
                 },
-                required: ["documentType"],
+                required: ['documentType'],
               },
             },
           },
@@ -1856,7 +1776,7 @@ export const realExpDocExpSchema: RJSFSchema = {
             documentUpload: {
               properties: {
                 [docType]: {
-                  type: "string",
+                  type: 'string',
                   title: `${docType} Document`,
                   isFileField: true,
                 },
