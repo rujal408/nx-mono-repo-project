@@ -8,6 +8,9 @@
     },
     {
       "path": "./applications/project_2"
+    },
+    {
+      "path": "./packages/events"
     }
   ]
 }

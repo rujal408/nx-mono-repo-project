@@ -1,8 +1,5 @@
 {
   "name": "@mono-repo-projects/project_1",
   "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "event-bus": "*"
-  }
+  "private": true
 }
