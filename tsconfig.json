@@ -8,9 +8,6 @@
     },
     {
       "path": "./applications/project_2"
-    },
-    {
-      "path": "./packages/event-bus"
     }
   ]
 }

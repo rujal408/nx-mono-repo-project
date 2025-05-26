@@ -6,6 +6,7 @@ import { useState } from "react";
 import { CustomArrayItemTemplate } from "../templates/custom-array-template";
 import HiddenInput from "../templates/custom-array-template/widgets/hidden-input";
 import AsyncInput from "../templates/custom-array-template/widgets/async-input";
+import ObjectFieldTemplate from "../templates/object-field-template";
 
 const schema: RJSFSchema = {
   title: "A registration form",
@@ -115,7 +116,9 @@ const FetchDataForm = () => {
         widgets={{ AsyncInput, HiddenInput }}
         templates={{
           CustomArrayItemTemplate, // Register the template
+          ObjectFieldTemplate
         }}
+      
       />
     </div>
   );
