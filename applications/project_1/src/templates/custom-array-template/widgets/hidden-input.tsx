@@ -17,10 +17,16 @@ const HiddenInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
     // }
     // prevValRef.current = val; // Update previous value after effect runs
 
-    eventBus.on('call-' + index, (data) => {
+    const handleValue = (data:any) => {
       console.log({ data });
       props.onChange(true);
-    });
+    };
+
+    eventBus.on('call-' + index, handleValue);
+
+    return () => {
+      eventBus.off('call-' + index, handleValue);
+    };
   }, []);
 
   return <input type="hidden" />;
