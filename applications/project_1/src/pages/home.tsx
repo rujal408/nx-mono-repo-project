@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import Form from "@rjsf/core";
+import React, { useState } from 'react';
+import Form from '@rjsf/core';
 // import type { RJSFSchema, UiSchema } from "@rjsf/utils";
-import validator from '@rjsf/validator-ajv8'
-import { relatedpartySchema } from "../constants/related-party-schema";
-import Nav from "../components/nav";
+import validator from '@rjsf/validator-ajv8';
+import { relatedpartySchema } from '../constants/related-party-schema';
+import Nav from '../components/nav';
+import { useNavigate, useNavigation, useSearchParams } from 'react-router-dom';
 
 // interface Contact {
 //   enabled: boolean;
@@ -53,7 +54,6 @@ import Nav from "../components/nav";
 //   }
 // };
 
-
 // const uiSchema: UiSchema = {
 //   contacts: {
 //     items: {
@@ -64,7 +64,6 @@ import Nav from "../components/nav";
 //   }
 // };
 
-
 // const initialFormData: FormData = {
 //   contacts: [
 //     { enabled: false, name: "", address: "" },
@@ -73,22 +72,37 @@ import Nav from "../components/nav";
 // };
 
 const Home: React.FC = () => {
-    const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({});
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-    console.log({ formData })
-    return (
-        <>
-            <Nav />
-            <Form
-                schema={relatedpartySchema as any}
-                // uiSchema={uiSchema}
-                formData={formData}
-                validator={validator}
-                onChange={({ formData }) => setFormData(formData)}
-            // liveValidate
-            />
-        </>
-    );
+  const show = searchParams.get('show') === 'true';
+
+  return (
+    <>
+      <div style={{ display: show ? 'none' : 'initial' }}>
+        <Nav />
+      </div>
+      <div style={{ display: show ? 'initial' : 'none' }}>
+        <Form
+          schema={relatedpartySchema as any}
+          // uiSchema={uiSchema}
+          formData={formData}
+          validator={validator}
+          onChange={({ formData }) => setFormData(formData)}
+          // liveValidate
+        />
+      </div>
+      {show && <h1>Hello world</h1>}
+      <button
+        onClick={() => {
+          navigate(show ? '/' : '?show=true');
+        }}
+      >
+        TOggle
+      </button>
+    </>
+  );
 };
 
-export default Home
+export default Home;
