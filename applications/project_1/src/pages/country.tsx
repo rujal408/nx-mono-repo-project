@@ -30,12 +30,9 @@ const schema: RJSFSchema = {
           const: coutry.value,
           title: coutry.name,
         })),
-        default: 'banana',
+        default: 'nepal',
       },
-      district: {
-        type: 'string',
-        title: 'Select District',
-      },
+     
     },
     dependencies: {
       country: {
@@ -56,7 +53,6 @@ const schema: RJSFSchema = {
       },
     },
   },
-  default:[{country:'Nepal'}]
 };
 
 const Country = () => {
