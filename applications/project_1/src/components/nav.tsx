@@ -6,6 +6,8 @@ const Nav = () => {
       <Link to="/">Home</Link>
       <Link to="/fetchForm">Fetched Data Form</Link>
       <Link to="/dependent">Fetched Data Form</Link>
+      <Link to="/country">Country and district</Link>
+
     </div>
   );
 };
