@@ -39,7 +39,7 @@ const schema: RJSFSchema = {
               const: coutry.value,
               title: coutry.name,
             })),
-            default: 'nepal',
+            default: 'india',
           },
         },
         dependencies: {
