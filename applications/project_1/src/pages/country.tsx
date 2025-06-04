@@ -2,6 +2,7 @@ import Form from '@rjsf/core';
 import { RJSFSchema } from '@rjsf/utils';
 import Nav from '../components/nav';
 import validator from '@rjsf/validator-ajv8';
+import { useState } from 'react';
 
 const countries = [
   { name: 'Nepal', value: 'nepal' },
@@ -32,7 +33,7 @@ const schema: RJSFSchema = {
         })),
         default: 'nepal',
       },
-     
+
     },
     dependencies: {
       country: {
@@ -46,7 +47,7 @@ const schema: RJSFSchema = {
                 const: x.value,
                 title: x.name,
               })),
-              default:districts[x.value as keyof typeof districts][0].value
+              default: districts[x.value as keyof typeof districts][0].value
             },
           },
         })),
@@ -56,6 +57,8 @@ const schema: RJSFSchema = {
 };
 
 const Country = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
     <div>
       <Nav />
@@ -65,9 +68,15 @@ const Country = () => {
         // uiSchema={uiSchema}
         // formData={formData}
         validator={validator}
-        // onChange={({ formData }) => setFormData(formData)}
-        // liveValidate
+      // onChange={({ formData }) => setFormData(formData)}
+      // liveValidate
       />
+      <img
+        onLoad={(e) => { setIsLoading(false) }}
+        src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg"
+        style={{ display: isLoading ? "none" : 'initial', height: '200px', width: '200px' }}
+      />
+      {isLoading && <div style={{height:'200px', width:'200px', background:'black'}}></div>}
     </div>
   );
 };
