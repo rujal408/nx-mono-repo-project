@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { BaseForm } from "./base-form";
-import { FormProps } from "@rjsf/core";
+import Form, { FormProps } from "@rjsf/core";
 import { RJSFSchema } from "@rjsf/utils";
 import validator from '@rjsf/validator-ajv8';
 
@@ -25,29 +25,6 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
     // Get the list of steps from the forms object
     const steps: (keyof typeof forms)[] = useMemo(() => Object.keys(forms), [forms]);
 
-    // Logic for going to the next step
-    const nextStep = () => {
-        if (onNextStep) {
-            onNextStep(); // Call external onNextStep handler
-        } else if (currentStep < steps.length - 1) {
-            setCurrentStep(currentStep + 1); // Handle internally
-        }
-    };
-
-    // Logic for going to the previous step
-    const prevStep = () => {
-        if (onPrevStep) {
-            onPrevStep(); // Call external onPrevStep handler
-        } else if (currentStep > 0) {
-            setCurrentStep(currentStep - 1); // Handle internally
-        }
-    };
-
-    // Handle form submission
-    const onSubmit = (e: any) => {
-        console.log("Form submitted", e);
-    };
-
     // Handle form data changes for the current step
     const internalOnChange = (e: any) => {
         if (onChange) {
@@ -60,6 +37,34 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
         }
     };
 
+    // Logic for going to the next step
+    const nextStep = () => {
+
+
+
+        if (onNextStep) {
+            onNextStep(); // Call external onNextStep handler
+        } else if (currentStep < steps.length - 1) {
+            setCurrentStep(currentStep + 1); // Handle internally
+        }
+
+    };
+
+    // Logic for going to the previous step
+    const prevStep = () => {
+        if (onPrevStep) {
+            onPrevStep(); // Call external onPrevStep handler
+        } else if (currentStep > 0) {
+            setCurrentStep(currentStep - 1); // Handle internally
+        }
+    };
+
+    // Handle form submission
+    const onSubmit = async () => {
+
+        console.log('Alert')
+
+    };
 
     return (
         <div>
@@ -67,18 +72,21 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
             {forms[steps[currentStep]].description && <p>{forms[steps[currentStep]].description}</p>}
 
             {/* Render the form for the current step */}
-            {steps.map(formStep =>
-                <div style={{ display: formStep === steps[currentStep] ? 'initial' : 'none' }}>
-                    <BaseForm
-                        {...forms[formStep].props}
-                        formData={formData[formStep]}
-                        validator={validator}
-                        onChange={internalOnChange}
-                        onSubmit={onSubmit}
-                    />
-                </div>
-            )}
 
+            <BaseForm
+                {...forms[steps[currentStep]].props}
+                uiSchema={{
+                    ...forms[steps[currentStep]].props.uiSchema,
+                    'ui:submitButtonOptions': {
+                        norender: true
+                    }
+                }}
+                formData={formData[steps[currentStep]]}
+                validator={validator}
+                onChange={internalOnChange}
+                onSubmit={onSubmit}
+
+            />
             {/* Navigation buttons */}
             <div className="stepper-navigation">
                 {currentStep > 0 && (
@@ -87,10 +95,11 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
                 {currentStep < steps.length - 1 ? (
                     <button type="button" onClick={nextStep}>Next</button>
                 ) : (
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={onSubmit}>Submit</button>
                 )}
             </div>
         </div>
+
     );
 };
 

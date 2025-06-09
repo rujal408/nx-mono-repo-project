@@ -23,7 +23,7 @@ const CustomObjectFieldTemplate = ({
       {/* Properties (fields) */}
       <div className="object-fields">
         {properties.map((element) => (
-          <div className="object-field">{element.content}</div>
+          <div key={element.content.key} className="object-field">{element.content}</div>
         ))}
       </div>
     </div>
