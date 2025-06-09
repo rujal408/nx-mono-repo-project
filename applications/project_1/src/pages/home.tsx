@@ -2,6 +2,7 @@ import React, { useState } from 'react';// import type { RJSFSchema, UiSchema } 
 import validator from '@rjsf/validator-ajv8';
 import Nav from '../components/nav';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+// import { BaseForm } from '@mono-repo-projects/form-generator';
 
 // interface Contact {
 //   enabled: boolean;
@@ -93,6 +94,7 @@ const Home: React.FC = () => {
           formData={formData}
           onChange={setFormData} validator={validator}
         /> */}
+       
       </div>
       {show && <h1>Hello world</h1>}
       <button
