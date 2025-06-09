@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
 import { BaseForm } from "./base-form";
 import { FormProps } from "@rjsf/core";
-import { RJSFSchema, ErrorSchema, FormValidation } from "@rjsf/utils";
+import { RJSFSchema, ErrorSchema } from "@rjsf/utils";
 import validator from '@rjsf/validator-ajv8';
 
 interface StepDefinition {
@@ -37,11 +37,6 @@ const StepperForm = ({
   
   const steps = useMemo(() => Object.keys(forms), [forms]);
   const currentStepKey = steps[currentStep];
-  
-  // Sync current step when prop changes
-  useEffect(() => {
-    setCurrentStep(step);
-  }, [step]);
 
   // Handle form data changes
   const handleChange = useCallback((e: any) => {
