@@ -3,6 +3,7 @@ import validator from '@rjsf/validator-ajv8';
 import Nav from '../components/nav';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BaseForm } from '../lib/forms/base-form';
+import { StepperForm } from '../lib/forms/stepper-form';
 // import { BaseForm } from '@mono-repo-projects/form-generator';
 
 // interface Contact {
@@ -83,17 +84,41 @@ const Home: React.FC = () => {
         <Nav />
       </div>
       <div style={{ display: show ? 'initial' : 'none' }}>
-        <BaseForm
-          schema={{
-            type: "object",
-            properties: {
-              name: { type: "string" },
-              age: { type: "number" },
+        <StepperForm
+          forms={{
+            step1: {
+              title: "Step 1",
+              props: {
+                schema: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    age: { type: "number" },
+                  },
+                  required: ["name", "age"],
+                },
+                // formData: formData,
+                // onChange: setFormData,
+                validator,
+              },
             },
-            required: ["name", "age"],
+            step2: {
+              title: "Step 2",
+              props: {
+                schema: {
+                  type: "object",
+                  properties: {
+                    address: { type: "string" },
+                    phone: { type: "number" },
+                  },
+                  required: ["address", "phone"],
+                },
+                // formData: formData,
+                // onChange: setFormData,
+                validator,
+              },
+            },
           }}
-          formData={formData}
-          onChange={setFormData} validator={validator}
         />
        
       </div>

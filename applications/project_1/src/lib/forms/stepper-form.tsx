@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { BaseForm } from "./base-form";
 import { FormProps } from "@rjsf/core";
 import { RJSFSchema } from "@rjsf/utils";
@@ -23,7 +23,7 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
     const [currentStep, setCurrentStep] = useState(step || 0);
 
     // Get the list of steps from the forms object
-    const steps: (keyof typeof forms)[] = Object.keys(forms);
+    const steps: (keyof typeof forms)[] = useMemo(() => Object.keys(forms), [forms]);
 
     // Logic for going to the next step
     const nextStep = () => {
