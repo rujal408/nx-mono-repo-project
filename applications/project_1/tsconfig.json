@@ -6,6 +6,9 @@
       "path": "../../packages/events"
     },
     {
+      "path": "../../packages/bpm-form-generator"
+    },
+    {
       "path": "./tsconfig.app.json"
     }
   ],

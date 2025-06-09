@@ -4,7 +4,8 @@ import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
 import { relatedpartySchema } from '../constants/related-party-schema';
 import Nav from '../components/nav';
-import { useNavigate, useNavigation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { BaseForm } from '@mono-repo-projects/BPMFormGenerator';
 
 // interface Contact {
 //   enabled: boolean;
@@ -84,13 +85,17 @@ const Home: React.FC = () => {
         <Nav />
       </div>
       <div style={{ display: show ? 'initial' : 'none' }}>
-        <Form
-          schema={relatedpartySchema as any}
-          // uiSchema={uiSchema}
+        <BaseForm
+          schema={{
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              age: { type: "number" },
+            },
+            required: ["name", "age"],
+          }}
           formData={formData}
-          validator={validator}
-          onChange={({ formData }) => setFormData(formData)}
-          // liveValidate
+          onChange={setFormData} validator={validator}
         />
       </div>
       {show && <h1>Hello world</h1>}
