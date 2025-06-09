@@ -34,9 +34,6 @@
   "references": [
     {
       "path": "../../packages/events/tsconfig.lib.json"
-    },
-    {
-      "path": "../../packages/bpm-form-generator/tsconfig.lib.json"
     }
   ]
 }
