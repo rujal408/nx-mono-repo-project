@@ -68,7 +68,7 @@ const StepperForm = ({ forms, onChange, onNextStep, onPrevStep, step }: IProps) 
 
             {/* Render the form for the current step */}
             {steps.map(formStep =>
-                <div style={{ display: formStep === steps[currentStep] ? 'block' : 'none' }}>
+                <div style={{ display: formStep === steps[currentStep] ? 'initial' : 'none' }}>
                     <BaseForm
                         {...forms[formStep].props}
                         formData={formData[formStep]}
