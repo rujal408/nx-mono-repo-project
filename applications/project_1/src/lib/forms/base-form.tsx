@@ -9,14 +9,14 @@ interface IProps extends FormProps<any, RJSFSchema, any> {
 
 const BaseForm = ({ widgets, templates, ...rest }: IProps) => {
     return <Form
-    widgets={{
-        ...widgets,
-    }}
-    templates={{
-        ...templates,
-        ObjectFieldTemplate,
-        ArrayFieldTemplate,
-    }}
+        widgets={{
+            ...widgets,
+        }}
+        templates={{
+            ...templates,
+            ObjectFieldTemplate,
+            ArrayFieldTemplate,
+        }}
         {...rest}
     />
 }
