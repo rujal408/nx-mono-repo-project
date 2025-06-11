@@ -1,7 +1,7 @@
-import React, { useState } from 'react';// import type { RJSFSchema, UiSchema } from "@rjsf/utils";
+import React from 'react';// import type { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from '@rjsf/validator-ajv8';
 import Nav from '../components/nav';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+// import { useNavigate, useSearchParams } from 'react-router-dom';
 import { StepperForm } from '@mono-repo-projects/bpm-form-generator'
 
 // interface Contact {
@@ -70,19 +70,12 @@ import { StepperForm } from '@mono-repo-projects/bpm-form-generator'
 // };
 
 const Home: React.FC = () => {
-  const [formData, setFormData] = useState({});
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  const show = searchParams.get('show') === 'true';
+  // const [formData, setFormData] = useState({});
 
   return (
     <>
-      <div style={{ display: show ? 'none' : 'initial' }}>
-        <Nav />
-      </div>
-      <div style={{ display: show ? 'initial' : 'none' }}>
-        <StepperForm
+      <Nav />
+      <StepperForm
           forms={{
             step1: {
               title: "Step 1",
@@ -90,10 +83,45 @@ const Home: React.FC = () => {
                 schema: {
                   type: "object",
                   properties: {
-                    name: { type: "string" },
-                    age: { type: "number" },
+                    // firstName: { type: "string", title: "First Name" },
+                    // lastName: { type: "string", title: "Last Name" },
+                    country: {
+                      type: "string",
+                      title: "Country",
+                      enum: ["USA", "Canada", "Mexico"], // List of countries
+                    },
                   },
-                  required: ["name", "age"],
+                  dependencies: {
+                    // Define a dependency rule for country field
+                    country: {
+                      oneOf: [
+                        {
+                          properties: {
+                            country: { enum: ["USA"] },
+                            firstName: { type: "string", title: "First Name",},
+                            lastName: { type: "string", title: "Last Name",},
+                          },
+                          required: ["firstName", "lastName"], // Require firstName and lastName when USA is selected
+                        },
+                        {
+                          properties: {
+                            country: { enum: ["Canada"] },
+                            firstName: { type: "string", title: "First Name", },
+                            lastName: { type: "string", title: "Last Name", },
+                          },
+                          required: ["firstName", "lastName"], // Require firstName and lastName when Canada is selected
+                        },
+                        {
+                          properties: {
+                            country: { enum: ["Mexico"] },
+                            firstName: { type: "string", title: "First Name", },
+                            lastName: { type: "string", title: "Last Name", },
+                          },
+                          required: [], // No firstName and lastName required when Mexico is selected
+                        },
+                      ],
+                    },
+                  },
                 },
                 // formData: formData,
                 // onChange: setFormData,
@@ -118,16 +146,6 @@ const Home: React.FC = () => {
             },
           }}
         />
-
-      </div>
-      {show && <h1>Hello world</h1>}
-      <button
-        onClick={() => {
-          navigate(show ? '/' : '?show=true');
-        }}
-      >
-        TOggle
-      </button>
     </>
   );
 };
