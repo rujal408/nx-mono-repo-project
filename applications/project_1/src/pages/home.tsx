@@ -2,9 +2,7 @@ import React, { useState } from 'react';// import type { RJSFSchema, UiSchema } 
 import validator from '@rjsf/validator-ajv8';
 import Nav from '../components/nav';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { BaseForm } from '../lib/forms/base-form';
-import { StepperForm } from '../lib/forms/stepper-form';
-// import { BaseForm } from '@mono-repo-projects/form-generator';
+import { StepperForm } from '@mono-repo-projects/bpm-form-generator'
 
 // interface Contact {
 //   enabled: boolean;
@@ -120,7 +118,7 @@ const Home: React.FC = () => {
             },
           }}
         />
-       
+
       </div>
       {show && <h1>Hello world</h1>}
       <button
