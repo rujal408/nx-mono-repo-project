@@ -1,7 +1,7 @@
 import { ObjectFieldTemplateProps } from '@rjsf/utils';
 import './style.scss'
 
-const CustomObjectFieldTemplate = ({
+const ObjectFieldTemplate = ({
   properties,
   title,
   description,
@@ -23,11 +23,11 @@ const CustomObjectFieldTemplate = ({
       {/* Properties (fields) */}
       <div className="object-fields">
         {properties.map((element) => (
-          <div className="object-field">{element.content}</div>
+          <div key={element.content.key} className="object-field">{element.content}</div>
         ))}
       </div>
     </div>
   );
 };
 
-export default CustomObjectFieldTemplate;
+export default ObjectFieldTemplate;

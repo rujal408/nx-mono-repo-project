@@ -1,5 +1,5 @@
 {
-  "name": "@mono-repo-projects/form-generator",
+  "name": "@mono-repo-projects/bpm-form-generator",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
@@ -13,8 +13,5 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
-  },
-  "nx": {
-    "name": "form-generator"
   }
 }
