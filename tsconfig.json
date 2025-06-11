@@ -13,9 +13,6 @@
       "path": "./packages/events"
     },
     {
-      "path": "./packages/form-generator"
-    },
-    {
       "path": "./packages/bpm-form-generator"
     }
   ]

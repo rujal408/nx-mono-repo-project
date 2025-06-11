@@ -13,7 +13,8 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
     const [loading, setLoading] = useState(false)
 
     const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(event.target.value);
+        const target = event.target;
+        onChange(target.value);
     }, []);
 
     const { control: { setValue } } = useCustomArrayItemContext()
@@ -22,7 +23,7 @@ const AsyncInput: React.FC<WidgetProps<any, RJSFSchema, any>> = (props) => {
         if (props?.uiSchema?.["ui:options"]?.[0]) {
             setLoading(true)
             const res = await fetch(props?.uiSchema?.["ui:options"]?.[0].replace(":userId", "1"))
-            const data = await res.json();
+            const data:any = await res.json();
             setLoading(false)
             setValue(data.title)
         }
