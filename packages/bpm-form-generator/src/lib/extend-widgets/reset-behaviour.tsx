@@ -4,11 +4,11 @@ import React from 'react';
 export default class ResetBehavior {
   static createWidget(BaseWidget: React.ComponentType<WidgetProps>) {
     return (props: WidgetProps) => {
-      const { formContext, uiSchema } = props;
+      const { formContext, uiSchema, onChange } = props;
       const resetConfig = uiSchema?.['ui:options']?.resetConfig;
 
       const handleChange = (value: string) => {
-        props.onChange(value); // Call the original onChange function
+        onChange(value); // Call the original onChange function
 
         // If resetConfig exists and formContext is available, call the handleReset function
         if (resetConfig && formContext?.handleReset) {
