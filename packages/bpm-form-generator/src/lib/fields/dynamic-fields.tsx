@@ -320,7 +320,7 @@ class DynamicField extends Component<FieldProps, DynamicFieldState> {
                 gap: layout === 'horizontal' ? '15px' : '0',
                 flexWrap: 'wrap'
             }}>
-                {this.state.fieldConfigs.map((field,i) => <div key={i}>{this.renderField(field)}</div>)}
+                {this.state.fieldConfigs.map((field) => <div key={field.name}>{this.renderField(field)}</div>)}
             </div>
         );
     }

@@ -123,22 +123,22 @@ const Home: React.FC = () => {
 
           description: "Enter amount (must not exceed the maximum limit)"
         },
-        required:["AccountNumber","Amount"]
+        required: ["AccountNumber", "Amount"]
       }
     }
   }
 
-  const uiSchema:UiSchema={
-    dependAccount:{
-      "ui:field":"dynamic",
-      "ui:options":{
-        fields:[
+  const uiSchema: UiSchema = {
+    dependAccount: {
+      "ui:field": "dynamic",
+      "ui:options": {
+        fields: [
           {
-            name:"AccountNumber",
-            type:"string",
-            widget:"select",
-            title:"Account Number",
-            options:accountData.map(x => ({
+            name: "AccountNumber",
+            type: "string",
+            widget: "select",
+            title: "Account Number",
+            options: accountData.map(x => ({
               value: x.AccountNumber,
               label: x.AccountNumber
             }))
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
             type: 'number' as const,
             widget: 'number' as const,
             placeholder: 'Enter amount',
-            
+
           }
         ],
         dependencies: accountData.map(account => ({
@@ -196,7 +196,7 @@ const Home: React.FC = () => {
           properties,
         }}
         uiSchema={uiSchema}
-        onSubmit={(data)=>console.log(data.formData)}
+        onSubmit={(data) => console.log(data.formData)}
       />
       {/* <StepperForm
           forms={{
