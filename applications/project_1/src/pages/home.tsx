@@ -2,7 +2,7 @@ import React from 'react';// import type { RJSFSchema, UiSchema } from "@rjsf/ut
 import validator from '@rjsf/validator-ajv8';
 import Nav from '../components/nav';
 // import { useNavigate, useSearchParams } from 'react-router-dom';
-import { BaseForm, StepperForm } from '@mono-repo-projects/bpm-form-generator'
+import { BaseForm } from '@mono-repo-projects/bpm-form-generator'
 import { RJSFSchema, UiSchema } from '@rjsf/utils';
 
 // interface Contact {
@@ -73,7 +73,7 @@ import { RJSFSchema, UiSchema } from '@rjsf/utils';
 const accountData = [
   {
     "AccountNumber": "01716017536737",
-    "MaximumLimit": 9000
+    "MaximumLimit": 5000
   },
   {
     "AccountNumber": "01716017536829",
@@ -85,7 +85,7 @@ const accountData = [
   },
   {
     "AccountNumber": "01716017536828",
-    "MaximumLimit": 9000
+    "MaximumLimit": 6000
   },
   {
     "AccountNumber": "01716017537455",
@@ -123,7 +123,6 @@ const Home: React.FC = () => {
 
           description: "Enter amount (must not exceed the maximum limit)"
         },
-        required: ["AccountNumber", "Amount"]
       }
     }
   }
@@ -198,77 +197,6 @@ const Home: React.FC = () => {
         uiSchema={uiSchema}
         onSubmit={(data) => console.log(data.formData)}
       />
-      {/* <StepperForm
-          forms={{
-            step1: {
-              title: "Step 1",
-              props: {
-                schema: {
-                  type: "object",
-                  properties: {
-                    // firstName: { type: "string", title: "First Name" },
-                    // lastName: { type: "string", title: "Last Name" },
-                    country: {
-                      type: "string",
-                      title: "Country",
-                      enum: ["USA", "Canada", "Mexico"], // List of countries
-                    },
-                  },
-                  dependencies: {
-                    // Define a dependency rule for country field
-                    country: {
-                      oneOf: [
-                        {
-                          properties: {
-                            country: { enum: ["USA"] },
-                            firstName: { type: "string", title: "First Name",},
-                            lastName: { type: "number", title: "Last Name"},
-                          },
-                          required: ["firstName", "lastName"], // Require firstName and lastName when USA is selected
-                        },
-                        {
-                          properties: {
-                            country: { enum: ["Canada"] },
-                            firstName: { type: "string", title: "First Name", },
-                            lastName: { type: "string", title: "Last Name", },
-                          },
-                          required: ["firstName", "lastName"], // Require firstName and lastName when Canada is selected
-                        },
-                        {
-                          properties: {
-                            country: { enum: ["Mexico"] },
-                            firstName: { type: "string", title: "First Name", },
-                            lastName: { type: "string", title: "Last Name", },
-                          },
-                          required: [], // No firstName and lastName required when Mexico is selected
-                        },
-                      ],
-                    },
-                  },
-                },
-                // formData: formData,
-                // onChange: setFormData,
-                validator,
-              },
-            },
-            step2: {
-              title: "Step 2",
-              props: {
-                schema: {
-                  type: "object",
-                  properties: {
-                    address: { type: "string" },
-                    phone: { type: "number" },
-                  },
-                  required: ["address", "phone"],
-                },
-                // formData: formData,
-                // onChange: setFormData,
-                validator,
-              },
-            },
-          }}
-        /> */}
     </>
   );
 };
