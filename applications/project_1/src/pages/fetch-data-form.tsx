@@ -7,6 +7,7 @@ import { CustomArrayItemTemplate } from "../templates/custom-array-template";
 import HiddenInput from "../templates/custom-array-template/widgets/hidden-input";
 import AsyncInput from "../templates/custom-array-template/widgets/async-input";
 import ObjectFieldTemplate from "../templates/object-field-template";
+import { BaseForm } from "@mono-repo-projects/bpm-form-generator";
 
 const schema: RJSFSchema = {
   title: "A registration form",
@@ -107,7 +108,7 @@ const FetchDataForm = () => {
   return (
     <div>
       <Nav />
-      <Form
+      <BaseForm
         schema={schema}
         onChange={(e) => setFormData(e.formData)}
         formData={formData}

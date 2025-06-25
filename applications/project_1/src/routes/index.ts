@@ -4,6 +4,7 @@ import FetchDataForm from '../pages/fetch-data-form';
 import Home from '../pages/home';
 import Country from '../pages/country';
 import FieldArrayDisablePage from '../pages/field-array-disable';
+import IFrameForm from '../pages/iframe-form';
 
 const router = createBrowserRouter([
   { path: '/', Component: Home },
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
   { path: '/dependent', Component: Dependent },
   { path: '/country', Component: Country },
   { path: '/field-array-disable', Component: FieldArrayDisablePage },
+  { path: '/iframe-form', Component: IFrameForm },
 ]);
 
 export default router;

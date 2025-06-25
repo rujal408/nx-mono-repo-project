@@ -3,6 +3,7 @@ import { RJSFSchema } from "@rjsf/utils"
 import ObjectFieldTemplate from "../templates/object-field-template"
 import ArrayFieldTemplate from "../templates/array-field-template"
 import DynamicField from "../fields/dynamic-fields"
+import IFrameTemplate from "../templates/iframe-template"
 
 interface IProps extends FormProps<any, RJSFSchema, any> { }
 
@@ -19,6 +20,7 @@ const BaseForm = ({ widgets, templates, fields, ...rest }: IProps) => {
             ...templates,
             ObjectFieldTemplate,
             ArrayFieldTemplate,
+            IFrameTemplate
         }}
         {...rest}
     />
