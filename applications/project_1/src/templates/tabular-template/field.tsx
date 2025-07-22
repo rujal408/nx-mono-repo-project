@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useTabularTemplateContext } from './provider';
 
 const DynamicField: React.FC<FieldProps> = (props) => {
-  const { control:{onRemove} } = useTabularTemplateContext();
+  const { control: { onRemove } } = useTabularTemplateContext();
   const [state, setState] = useState(() => ({ ...props.formData }));
 
   const onChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
