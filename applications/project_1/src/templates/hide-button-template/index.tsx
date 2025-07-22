@@ -1,7 +1,6 @@
 import type { ArrayFieldTemplateProps } from '@rjsf/utils';
 
 export const HideButtonTemplate = (props: ArrayFieldTemplateProps) => {
-  console.log(props)
   const hide = (props.formData as any[])
     .some(x => x.country === props.uiSchema?.['ui:options']?.hideButtonValue)
 

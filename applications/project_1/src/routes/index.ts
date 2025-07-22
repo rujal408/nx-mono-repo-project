@@ -5,6 +5,7 @@ import Home from '../pages/home';
 import Country from '../pages/country';
 import FieldArrayDisablePage from '../pages/field-array-disable';
 import IFrameForm from '../pages/iframe-form';
+import FieldArrayModal from '../pages/field-array-modal';
 
 const router = createBrowserRouter([
   { path: '/', Component: Home },
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   { path: '/country', Component: Country },
   { path: '/field-array-disable', Component: FieldArrayDisablePage },
   { path: '/iframe-form', Component: IFrameForm },
+  { path: '/field-array-modal', Component: FieldArrayModal },
 ]);
 
 export default router;

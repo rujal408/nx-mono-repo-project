@@ -9,7 +9,7 @@ const Nav = () => {
       <Link to="/country">Country and district</Link>
       <Link to="/field-array-disable">Field Array Hide Button</Link>
       <Link to="/iframe-form">IFrame</Link>
-
+      <Link to="/field-array-modal">Field Array Modal</Link>
     </div>
   );
 };
