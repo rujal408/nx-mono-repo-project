@@ -1,39 +1,87 @@
-import { FieldProps } from '@rjsf/utils';
-import React, { useEffect, useRef, useState } from 'react';
+import { FieldProps, RJSFSchema } from '@rjsf/utils';
+import React, { useState } from 'react';
 import { useTabularTemplateContext } from './provider';
+import styles from './tabular-modal-field.module.css';
+import { TabularModal } from './modal/Modal';
+import Form from '@rjsf/core';
+import validator from '@rjsf/validator-ajv8';
 
 const TabularModalField: React.FC<FieldProps> = (props) => {
   const { control: { onRemove }, cols } = useTabularTemplateContext();
   const [state, setState] = useState(() => ({ ...props.formData }));
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const onChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState((prev: any) => {
-      const newState = { ...prev, [name]: parseFloat(event.target.value) };
-      props.onChange(newState);
-      return newState;
-    });
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+  //   setEditValues((prev: Record<string, any>) => ({
+  //     ...prev,
+  //     [field]: e.target.value
+  //   }));
+  // };
+
+  const schema:RJSFSchema = {
+    title:props.title,
+    ...props.schema
+  }
+
+  const handleEditClick = () => {
+    // setEditValues({ ...state });
+    setIsEditModalOpen(true);
   };
 
-  console.log({ TabularModalField: props, cols });
+  const handleSave = (data: any) => {
+    setState(data.formData);
+    props.onChange(data.formData);
+    setIsEditModalOpen(false);
+  };
 
-
+  console.log({props})
 
   return (
-    <div className="tabular-row-view">
-      {cols.map((col) => (
-        <div key={col} className="tabular-cell" data-label={col}>
-          {state[col]}
+    <>
+      <div className="tabular-row-view">
+        {cols.map((col) => (
+          <div key={col} className="tabular-cell" data-label={col}>
+            {state[col]}
+          </div>
+        ))}
+        <div className="tabular-cell actions">
+          <button 
+            onClick={handleEditClick} 
+            className="action-button edit" 
+            aria-label="Edit row"
+            type='button'
+          >
+            Edit
+          </button>
+          <button 
+            onClick={onRemove} 
+            className="action-button remove" 
+            aria-label="Remove row"
+          >
+            Remove
+          </button>
         </div>
-      ))}
-      <div className="tabular-cell actions">
-        <button className="action-button edit" aria-label="Edit row">
-          Edit
-        </button>
-        <button onClick={onRemove} className="action-button remove" aria-label="Remove row">
-          Remove
-        </button>
       </div>
-    </div>
+
+      <TabularModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        title={props.title||''}
+      >
+        <div className={styles.editModalContent}>
+          <Form schema={schema} validator={validator} formData={props.formData as any} onSubmit={handleSave}/>
+          <div className={styles.modalActions}>
+            <button 
+              onClick={() => setIsEditModalOpen(false)}
+              className={`${styles.btn} ${styles.btnSecondary}`}
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </TabularModal>
+    </>
   );
 };
 
