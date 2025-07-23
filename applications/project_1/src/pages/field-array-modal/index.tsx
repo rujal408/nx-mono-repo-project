@@ -37,7 +37,7 @@ const schema: RJSFSchema = {
 const uiSchema: UiSchema = {
   items: {
     'ui:options': {
-      columns: ['name', 'roll', 'phone'] // Only show these columns in the table
+      columns: [{ key: 'name', label: 'Name' }, { key: 'roll', label: 'Roll' }] // Only show these columns in the table
     },
     'ui:field': 'ModalArrayField', // Use custom field for each item
 
