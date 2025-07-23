@@ -11,16 +11,19 @@ import {
     control: {
       onRemove: () => void;
     };
+    cols:string[]
   } | null>(null);
   
   const Provider = ({
     index,
     children,
     onRemove,
+    cols
   }: {
     index: number;
     children: ReactNode;
     onRemove: () => void;
+    cols:string[]
   }) => {
   
     // Memoize context value to prevent unnecessary updates
@@ -28,6 +31,7 @@ import {
       () => ({
         index,
         control: { onRemove },
+        cols
       }),
       [index,onRemove]
     );
