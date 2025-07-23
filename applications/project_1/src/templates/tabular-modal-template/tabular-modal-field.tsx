@@ -8,15 +8,7 @@ import validator from '@rjsf/validator-ajv8';
 
 const TabularModalField: React.FC<FieldProps> = (props) => {
   const { control: { onRemove }, cols } = useTabularTemplateContext();
-  const [state, setState] = useState(() => ({ ...props.formData }));
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
-  //   setEditValues((prev: Record<string, any>) => ({
-  //     ...prev,
-  //     [field]: e.target.value
-  //   }));
-  // };
 
   const schema:RJSFSchema = {
     title:props.title,
@@ -24,12 +16,10 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
   }
 
   const handleEditClick = () => {
-    // setEditValues({ ...state });
     setIsEditModalOpen(true);
   };
 
   const handleSave = (data: any) => {
-    setState(data.formData);
     props.onChange(data.formData);
     setIsEditModalOpen(false);
   };
@@ -41,7 +31,7 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
       <div className="tabular-row-view">
         {cols.map((col) => (
           <div key={col} className="tabular-cell" data-label={col}>
-            {state[col]}
+            {props.formData[col]}
           </div>
         ))}
         <div className="tabular-cell actions">
