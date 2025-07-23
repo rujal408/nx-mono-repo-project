@@ -59,7 +59,7 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
         title={props.title||''}
       >
         <div className={styles.editModalContent}>
-          <Form schema={schema} validator={validator} formData={props.formData as any} onSubmit={handleSave}/>
+          <Form schema={schema} validator={validator} formData={props.formData} onSubmit={handleSave}/>
           <div className={styles.modalActions}>
             <button 
               onClick={() => setIsEditModalOpen(false)}
