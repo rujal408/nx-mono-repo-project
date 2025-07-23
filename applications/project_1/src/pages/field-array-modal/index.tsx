@@ -39,9 +39,17 @@ const schema: RJSFSchema = {
           }
         },
         "required": ["name", "roll"]
-      }
+      },
     }
   },
+  default: {
+    userDetails: [{
+      name: "rujals djfls",
+      address: "hgjhghj",
+      roll: 678,
+      phone: "897987897"
+    }]
+  }
 
 }
 
