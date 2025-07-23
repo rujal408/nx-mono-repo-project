@@ -7,11 +7,11 @@ import Form from '@rjsf/core';
 import validator from '@rjsf/validator-ajv8';
 
 const TabularModalField: React.FC<FieldProps> = (props) => {
-  const { control: { onRemove }, cols } = useTabularTemplateContext();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const { control: { onRemove }, cols, index } = useTabularTemplateContext();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(index === 0 ? false : true);
 
-  const schema:RJSFSchema = {
-    title:props.title,
+  const schema: RJSFSchema = {
+    title: props.title,
     ...props.schema
   }
 
@@ -24,7 +24,7 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
     setIsEditModalOpen(false);
   };
 
-  console.log({props})
+  console.log({ props })
 
   return (
     <>
@@ -35,17 +35,17 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
           </div>
         ))}
         <div className="tabular-cell actions">
-          <button 
-            onClick={handleEditClick} 
-            className="action-button edit" 
+          <button
+            onClick={handleEditClick}
+            className="action-button edit"
             aria-label="Edit row"
             type='button'
           >
             Edit
           </button>
-          <button 
-            onClick={onRemove} 
-            className="action-button remove" 
+          <button
+            onClick={onRemove}
+            className="action-button remove"
             aria-label="Remove row"
           >
             Remove
@@ -56,12 +56,12 @@ const TabularModalField: React.FC<FieldProps> = (props) => {
       <TabularModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
-        title={props.title||''}
+        title={props.title || ''}
       >
         <div className={styles.editModalContent}>
-          <Form schema={schema} validator={validator} formData={props.formData} onSubmit={handleSave}/>
+          <Form schema={schema} validator={validator} formData={props.formData} onSubmit={handleSave} />
           <div className={styles.modalActions}>
-            <button 
+            <button
               onClick={() => setIsEditModalOpen(false)}
               className={`${styles.btn} ${styles.btnSecondary}`}
               type="button"
