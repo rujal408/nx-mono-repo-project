@@ -89,7 +89,7 @@ const FieldArrayModal: React.FC = () => {
           TabularModalField
         }}
         templates={{
-          TabularModalTemplate: TabularModalTemplate
+          TabularModalTemplate
         }}
       />
     </div>
