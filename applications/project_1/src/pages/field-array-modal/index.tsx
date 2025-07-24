@@ -42,15 +42,6 @@ const schema: RJSFSchema = {
       },
     }
   },
-  default: {
-    userDetails: [{
-      name: "rujals djfls",
-      address: "hgjhghj",
-      roll: 678,
-      phone: "897987897"
-    }]
-  }
-
 }
 
 // Define the UI Schema for customizing the form appearance
@@ -58,7 +49,6 @@ const uiSchema: UiSchema = {
   "userDetails": {
     'ui:options': {
       tableColumns: [{ key: 'name', label: 'Name' }, { key: 'roll', label: 'Roll' }], // Only show these columns in the table
-      // tableActions: [{ key: 'remove', label: 'Remove' }]
     },
     items: {
       'ui:field': 'TabularModalField', // Use custom field for each item
