@@ -53,7 +53,7 @@ const uiSchema: UiSchema = {
     items: {
       'ui:field': 'TabularModalField', // Use custom field for each item
     },
-    "ui:ArrayFieldTemplate": TabularModalTemplate
+    "ui:ArrayFieldTemplate": "TabularModalTemplate"
   }
   // You can add per-field uiSchema here if needed
 
