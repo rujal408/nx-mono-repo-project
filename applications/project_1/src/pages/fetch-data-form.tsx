@@ -1,4 +1,3 @@
-import Form from "@rjsf/core";
 import Nav from "../components/nav";
 import validator from "@rjsf/validator-ajv8";
 import type { RJSFSchema, UiSchema } from "@rjsf/utils";
